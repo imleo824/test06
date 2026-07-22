@@ -45,13 +45,13 @@ const PlaystyleTooltip = ({ active, payload }: any) => {
       </div>
       <div className="space-y-1.5 text-base font-bold">
         <div className="flex items-center justify-between gap-4">
-          <span className="text-slate-500 font-semibold">1. 投注流水</span>
+          <span className="text-slate-950 font-bold">1. 投注流水</span>
           <span className="font-mono text-slate-950">
             {row.volume.toLocaleString()}
           </span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-slate-500 font-semibold">2. 盈亏金额</span>
+          <span className="text-slate-950 font-bold">2. 盈亏金额</span>
           <span className="font-mono font-black">
             <span
               className={`${row.winLoss >= 0 ? "text-emerald-600" : "text-rose-600"} mr-0.5`}
@@ -68,7 +68,7 @@ const PlaystyleTooltip = ({ active, payload }: any) => {
           </span>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <span className="text-slate-500 font-semibold">3. 盈利率 (杀率)</span>
+          <span className="text-slate-950 font-bold">3. 盈利率 (杀率)</span>
           <span className="font-mono font-black">
             <span
               className={`${row.rate >= 0 ? "text-emerald-600" : "text-rose-600"} mr-0.5`}
@@ -84,7 +84,7 @@ const PlaystyleTooltip = ({ active, payload }: any) => {
         </div>
         {row.betsCount && (
           <div className="flex items-center justify-between gap-4 border-t border-slate-100 pt-1.5">
-            <span className="text-slate-500 font-semibold">4. 注单数量</span>
+            <span className="text-slate-950 font-bold">4. 注单数量</span>
             <span className="font-mono text-slate-950">
               {row.betsCount.toLocaleString()}
             </span>
@@ -92,7 +92,7 @@ const PlaystyleTooltip = ({ active, payload }: any) => {
         )}
         {row.playersCount && (
           <div className="flex items-center justify-between gap-4">
-            <span className="text-slate-500 font-semibold">5. 投注人数</span>
+            <span className="text-slate-950 font-bold">5. 投注人数</span>
             <span className="font-mono text-slate-950">
               {row.playersCount.toLocaleString()}
             </span>
@@ -100,7 +100,7 @@ const PlaystyleTooltip = ({ active, payload }: any) => {
         )}
         {row.volumeShare && (
           <div className="flex items-center justify-between gap-4">
-            <span className="text-slate-500 font-semibold">6. 流水占比</span>
+            <span className="text-slate-950 font-bold">6. 流水占比</span>
             <span className="font-mono text-slate-950">{row.volumeShare}</span>
           </div>
         )}
@@ -534,16 +534,16 @@ export const MatchVolumeRateChart = ({
                 )}
               </p>
               <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm text-slate-600 font-medium">
-                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+                <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-700 shrink-0" />
                   <span>
                     {highlightNumbers(
-                      `[[正负场次比例]]：[[正向盈利]]比赛 [[green:${matchTrendSummary.positive} 场]]（占比 [[green:${matchTrendSummary.positiveShare}%]]），[[负向亏损]]比赛 [[red:${matchTrendSummary.negative} 场]]（占比 [[red:${matchTrendSummary.negativeShare}%]]），盈利盘面分布健康。`,
+                      `[[正负场次比例]]：[[正向盈利]]比赛 [[green:${matchTrendSummary.positive} 场]]（占比 [[green:${Number(matchTrendSummary.positiveShare).toFixed(2)}%]]），[[负向亏损]]比赛 [[red:${matchTrendSummary.negative} 场]]（占比 [[red:${Number(matchTrendSummary.negativeShare).toFixed(2)}%]]），盈利盘面分布健康。`,
                     )}
                   </span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-600 font-medium">
-                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+                <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+                  <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-700 shrink-0" />
                   <span>
                     {highlightNumbers(
                       `[[单场最大盈亏]]：单场[[最大盈利]]达 [[green:${maxWinMatch.winLoss.toLocaleString()}]]（${maxWinMatch.match.split(" ").slice(1, 4).join(" ")}），单场[[最大亏损]]为 [[red:${maxLossMatch.winLoss.toLocaleString()}]]（${maxLossMatch.match.split(" ").slice(1, 4).join(" ")}）。`,
@@ -568,7 +568,7 @@ export const MatchVolumeRateChart = ({
                   <span className="text-[13px] font-black text-slate-950 truncate">
                     {stage.label}
                   </span>
-                  <span className="text-[10px] text-slate-400 font-bold bg-slate-100 px-1 py-0.5 rounded whitespace-nowrap">
+                  <span className="text-[10px] text-slate-950 font-bold bg-slate-100 px-1 py-0.5 rounded whitespace-nowrap">
                     {stage.count} 场
                   </span>
                 </div>
@@ -580,7 +580,6 @@ export const MatchVolumeRateChart = ({
                     <div
                       className={`text-sm font-mono font-bold ${isLoss ? "text-rose-600" : "text-emerald-600"}`}
                     >
-                      {stage.winLossTotal > 0 ? "+" : ""}
                       {stage.winLossTotal.toLocaleString()}
                     </div>
                   </div>
@@ -589,10 +588,9 @@ export const MatchVolumeRateChart = ({
                       盈利率
                     </div>
                     <div
-                      className={`text-sm font-mono font-black ${stage.weightedRate < 0 ? "text-rose-600" : "text-blue-600"}`}
+                      className={`text-sm font-mono font-black ${stage.weightedRate < 0 ? "text-rose-600" : "text-emerald-600"}`}
                     >
-                      {stage.weightedRate > 0 ? "+" : ""}
-                      {stage.weightedRate.toFixed(2)}%
+                      {Number(stage.weightedRate).toFixed(2)}%
                     </div>
                   </div>
                 </div>
@@ -803,7 +801,7 @@ export const MatchVolumeRateChart = ({
               </div>
               <SummaryBox className="mb-4">
                 {highlightNumbers(
-                  "本届赛事[[绝杀绝平]]现象频发。从阶段分布看，[[32强阶段]] 最为集中，共录得 [[9 场]]（占比达 [[56.3%]]）；[[4强阶段]] 占比也高达 [[50.0%]]。这种频繁的赛果改写对盘口稳定性产生了显著冲击。",
+                  "本届赛事[[绝杀绝平]]现象频发。从阶段分布看，[[32强阶段]] 最为集中，共 [[blue:9 场]]（占比达 [[blue:56.3%]]）；[[4强阶段]] 占比也高达 [[blue:50.0%]]。",
                 )}
               </SummaryBox>
               
@@ -812,10 +810,13 @@ export const MatchVolumeRateChart = ({
               <div className="flex-none">
                 <div className="grid grid-cols-1 gap-4">
                   {/* 各阶段绝杀绝平场次比例 */}
-                  <div className="bg-white rounded-xl border border-slate-200/60 p-5 h-[480px] flex flex-col shadow-sm">
-                    <h6 className="text-sm font-black text-slate-900 block mb-4 flex items-center gap-1.5">
+                  <div className="bg-white rounded-xl border border-slate-200/80 p-5 h-[480px] flex flex-col shadow-sm">
+                    <h6 className="text-base font-black text-slate-900 block mb-4 flex items-center gap-1.5 flex-none">
                       <span className="w-1 h-3 bg-blue-500 rounded-full" />
                       各阶段绝杀绝平场次占比
+                      <span className="text-[10px] font-bold text-slate-950 ml-1">
+                        (80:00至90+N'、110:00至120+N'出现绝杀/绝平)
+                      </span>
                     </h6>
                     <div className="flex-1 w-full min-h-0">
                       <ResponsiveContainer width="100%" height="100%">
@@ -836,13 +837,13 @@ export const MatchVolumeRateChart = ({
                             dataKey="stage" 
                             axisLine={false} 
                             tickLine={false} 
-                            tick={{ fill: '#64748b', fontSize: 11, fontWeight: 800 }}
+                            tick={{ fill: '#64748b', fontSize: 13, fontWeight: 800 }}
                             interval={0}
                           />
                           <YAxis 
                             axisLine={false} 
                             tickLine={false} 
-                            tick={{ fill: '#64748b', fontSize: 11, fontWeight: 700 }}
+                            tick={{ fill: '#64748b', fontSize: 13, fontWeight: 700 }}
                             domain={[0, 'dataMax + 1']}
                             allowDecimals={false}
                             tickFormatter={(val) => `${val}场`}
@@ -853,7 +854,7 @@ export const MatchVolumeRateChart = ({
                               borderRadius: '8px', 
                               border: '1px solid #e2e8f0',
                               boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
-                              fontSize: '12px',
+                              fontSize: '14px',
                               fontWeight: 'bold'
                             }}
                             formatter={(val: number, name: string) => {
@@ -878,7 +879,7 @@ export const MatchVolumeRateChart = ({
                             <LabelList 
                               dataKey="label" 
                               position="top" 
-                              style={{ fill: '#1e293b', fontSize: 11, fontWeight: 800 }}
+                              style={{ fill: '#1e293b', fontSize: 16, fontWeight: 900 }}
                             />
                           </Bar>
                         </BarChart>
@@ -891,108 +892,106 @@ export const MatchVolumeRateChart = ({
 
             {/* 右列：亏损赛事明细 */}
             <div className="flex flex-col h-full">
-              <div className="flex-none">
-                <div className="mb-4">
-                  <h6 className="text-lg font-black text-slate-950 tracking-tight flex items-center gap-2">
-                    <TrendingDown className="w-5 h-5 text-rose-600" />
-                    亏损赛事明细
-                  </h6>
-                </div>
-
-                <SummaryBox className="mb-5 py-4">
-                  <p>
-                    与上届OZB相比，过盘率有显著上升： 达{" "}
-                    <span className="font-black text-slate-900">50.76%</span> (上届
-                    42.11%, <span className="text-rose-600 font-black">+8.65%</span>
-                    )。在全部 {lossDetailsData.length} 场亏损比赛中，共有{" "}
-                    <span className="text-rose-700 font-black">
-                      {
-                        lossDetailsData.filter(
-                          (item) =>
-                            item.isHandicapCleared === "是" || item.isGasp === "是",
-                        ).length
-                      }{" "}
-                      场
-                    </span>{" "}
-                    命中了
-                    <span className="text-rose-700 font-black">「过盘现象」</span>
-                    。
-                  </p>
-                </SummaryBox>
+              <div className="flex-none mb-4">
+                <h6 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
+                  <TrendingDown className="w-5 h-5 text-rose-600" />
+                  亏损赛事明细
+                </h6>
               </div>
 
-            <div className="flex-1" />
+              <SummaryBox className="mb-4">
+                <p className="text-base text-slate-950 font-bold leading-relaxed">
+                  {highlightNumbers(
+                    `与上届OZB相比，过盘率有显著上升：达 [[blue:50.76%]]（上届 42.11%，[[red:+8.65%]]）。在全部 ${lossDetailsData.length} 场亏损比赛中，共有 [[red:${
+                      lossDetailsData.filter(
+                        (item) =>
+                          item.isHandicapCleared === "是" || item.isGasp === "是",
+                      ).length
+                    } 场]] 命中了[[red:「过盘现象」]]。`,
+                  )}
+                </p>
+              </SummaryBox>
 
-            <div className="border border-slate-200/60 rounded-xl shadow-none relative flex-none">
-              <table className="w-full text-left text-sm font-bold border-collapse">
-                <thead className="sticky top-0 z-20">
-                  <tr className="bg-slate-100 border-b-2 border-slate-300 text-slate-950 font-black text-sm uppercase tracking-wider">
-                    <th className="py-3 px-3 text-center border-r border-slate-300/80 w-12 text-slate-950 font-black bg-slate-100 whitespace-nowrap">
-                      排名
-                    </th>
-                    <th className="py-3 px-4 text-left border-r border-slate-300/80 text-slate-950 font-black min-w-[150px] bg-slate-100 whitespace-nowrap">
-                      赛事
-                    </th>
-                    <th className="py-3 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black bg-slate-100 whitespace-nowrap">
-                      公司输赢
-                    </th>
-                    <th className="py-3 px-3 text-center border-r border-slate-300/80 w-20 text-slate-950 font-black bg-slate-100 whitespace-nowrap">
-                      是否过盘
-                    </th>
-                    <th className="py-3 px-3 text-center text-slate-950 font-black bg-slate-100 w-24 whitespace-nowrap">
-                      绝杀绝平
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {lossDetailsData.slice(0, 10).map((item) => {
-                    return (
-                      <tr key={item.rank} className=" text-slate-950 bg-white">
-                        <td className="py-2.5 px-3 text-center font-mono font-black border-r border-slate-100 bg-slate-50/20">
-                          {item.rank}
-                        </td>
-                        <td className="py-2.5 px-4 font-black border-r border-slate-100 text-slate-900">
-                          {item.match}
-                        </td>
-                        <td className="py-2.5 px-3 text-right font-mono tabular-nums border-r border-slate-100">
-                          <SignColoredValue
-                            value={item.companyWinLoss.toLocaleString(undefined, {
-                              minimumFractionDigits: 2,
-                              maximumFractionDigits: 2,
-                            })}
-                            className="font-mono font-black"
-                          />
-                        </td>
-                        <td className="py-2.5 px-3 text-center border-r border-slate-100">
-                          <span
-                            className={`inline-flex items-center rounded-md px-2 py-0.5 text-sm font-black border ${
-                              item.isHandicapCleared === "是"
-                                ? "bg-emerald-50 text-emerald-700 border-emerald-150"
-                                : "bg-rose-50 text-rose-700 border-rose-150"
-                            }`}
-                          >
-                            {item.isHandicapCleared}
-                          </span>
-                        </td>
-                        <td className="py-2.5 px-3 text-center">
-                          <span
-                            className={`inline-flex items-center rounded-md px-2 py-0.5 text-sm font-black border ${
-                              item.isGasp === "是"
-                                ? "bg-amber-50 text-amber-700 border-amber-150 "
-                                : "bg-slate-100 text-slate-700 border-slate-350"
-                            }`}
-                          >
-                            {item.isGasp}
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <div className="flex-1" />
+
+              <div className="flex-none">
+                <div className="bg-white rounded-xl border border-slate-200/80 p-5 h-[480px] flex flex-col shadow-sm overflow-hidden">
+                  <h6 className="text-base font-black text-slate-900 block mb-3 flex items-center gap-1.5 flex-none">
+                    <span className="w-1 h-3 bg-rose-500 rounded-full" />
+                    TOP 10 亏损赛事明细
+                  </h6>
+                  <div className="flex-1 w-full min-h-0 overflow-hidden rounded-lg border border-slate-200/80 bg-white">
+                    <table className="w-full text-left text-xs font-bold text-slate-950 border-collapse">
+                      <thead className="bg-slate-50 border-b border-slate-200">
+                        <tr className="text-slate-900 font-bold text-xs uppercase tracking-wider">
+                          <th className="py-2 px-2 text-center border-r border-slate-200/70 w-10 bg-slate-50 font-bold text-slate-900">
+                            排名
+                          </th>
+                          <th className="py-2 px-2.5 text-left border-r border-slate-200/70 font-bold text-slate-900">
+                            赛事
+                          </th>
+                          <th className="py-2 px-2.5 text-right border-r border-slate-200/70 font-bold text-slate-900">
+                            公司输赢
+                          </th>
+                          <th className="py-2 px-2 text-center border-r border-slate-200/70 w-18 font-bold text-slate-900">
+                            是否过盘
+                          </th>
+                          <th className="py-2 px-2 text-center font-bold text-slate-900 w-18">
+                            绝杀绝平
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100 font-mono text-xs">
+                        {lossDetailsData.slice(0, 10).map((item) => {
+                          return (
+                            <tr key={item.rank} className="hover:bg-slate-50/60 transition-colors bg-white">
+                              <td className="py-1.5 px-2 text-center font-mono font-bold border-r border-slate-100 text-slate-950 bg-slate-50/40">
+                                {item.rank}
+                              </td>
+                              <td className="py-1.5 px-2.5 font-sans font-bold border-r border-slate-100 text-slate-900 truncate max-w-[140px]">
+                                {item.match}
+                              </td>
+                              <td className="py-1.5 px-2.5 text-right font-mono font-bold border-r border-slate-100 whitespace-nowrap">
+                                <SignColoredValue
+                                  value={item.companyWinLoss.toLocaleString(undefined, {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2,
+                                  })}
+                                  className="font-mono font-bold"
+                                />
+                              </td>
+                              <td className="py-1.5 px-2 text-center border-r border-slate-100">
+                                <span
+                                  className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-bold border ${
+                                    item.isHandicapCleared === "是"
+                                      ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                                      : "bg-rose-50 text-rose-700 border-rose-200"
+                                  }`}
+                                >
+                                  {item.isHandicapCleared}
+                                </span>
+                              </td>
+                              <td className="py-1.5 px-2 text-center">
+                                <span
+                                  className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-bold border ${
+                                    item.isGasp === "是"
+                                      ? "bg-amber-50 text-amber-700 border-amber-200"
+                                      : "bg-slate-100 text-slate-900 border-slate-200"
+                                  }`}
+                                >
+                                  {item.isGasp}
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
       </div>
 
         {/* 核心玩法盈利分析 */}
@@ -1030,27 +1029,35 @@ export const MatchVolumeRateChart = ({
             )}
           </p>
           <ul className="space-y-2">
-            <li className="flex items-start gap-2 text-sm text-slate-600 font-medium">
-              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+            <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-700 shrink-0" />
               <span>
                 {highlightNumbers(
-                  "[[核心玩法杀率]]：主力玩法[[全场让球]]（杀率 [[1.11%]]）与[[全场大小]]（杀率 [[1.48%]]）合计贡献了 [[49.42%]] 的主力流水，但其[[杀率（盈利率）相对较低]]。",
+                  "[[核心玩法杀率]]：主力玩法[[全场让球]]（杀率 [[blue:1.11%]]）与[[全场大小]]（杀率 [[blue:1.48%]]）合计贡献了 [[blue:49.42%]] 的主力流水，但其[[杀率（盈利率）相对较低]]。",
                 )}
               </span>
             </li>
-            <li className="flex items-start gap-2 text-sm text-slate-600 font-medium">
-              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+            <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-700 shrink-0" />
               <span>
                 {highlightNumbers(
-                  "[[利润拉动贡献]]：相比之下，高倍数/高赔付玩法如[[全场波胆]]（杀率 [[15.56%]]）、[[谁先开球]]（杀率 [[11.45%]]）、[[晋级球队]]（杀率 [[11.07%]]）杀率极高，是平台利润沉淀的坚实支柱。",
+                  "[[利润拉动贡献]]：相比之下，高倍数/高赔付玩法如[[全场波胆]]（杀率 [[green:15.56%]]）、[[谁先开球]]（杀率 [[green:11.45%]]）、[[晋级球队]]（杀率 [[green:11.07%]]）杀率极高，是平台利润沉淀的坚实支柱。",
                 )}
               </span>
             </li>
-            <li className="flex items-start gap-2 text-sm text-slate-600 font-medium">
-              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+            <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-700 shrink-0" />
               <span>
                 {highlightNumbers(
-                  "[[下注刺激策略]]：在保障主力玩法盘口流动性的同时，后续赛事应[[加大高盈利玩法的针对性推广与下注刺激]]，引导用户向高杀率玩法转化。",
+                  "[[早盘滚球对比]]：早盘流水 [[blue:1,206,726]]、盈利额 [[green:65,926]]（盈利率 [[green:5.46%]]）；滚球流水 [[blue:1,200,045]]、盈利额 [[green:42,582]]（盈利率 [[green:3.55%]]）。",
+                )}
+              </span>
+            </li>
+            <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-700 shrink-0" />
+              <span>
+                {highlightNumbers(
+                  "[[下注刺激策略]]：在保障主力玩法盘口流动性的同时，后续赛事，尤其杯赛以及新人应[[加大高盈利玩法的针对性推广与下注刺激]]，引导用户向高杀率玩法转化。",
                 )}
               </span>
             </li>
@@ -1220,7 +1227,7 @@ export const MatchVolumeRateChart = ({
                           fontSize={10}
                           fontWeight={isTop3 ? "black" : "bold"}
                         >
-                          {`${value.toFixed(2)}%`}
+                          {`${Number(value).toFixed(2)}%`}
                         </text>
                       </g>
                     );
@@ -1260,7 +1267,7 @@ export const MatchVolumeRateChart = ({
         <SummaryBox className="mt-4 mb-6">
           <p className="text-base text-slate-950 font-bold leading-relaxed">
             {highlightNumbers(
-              `全场[[水钱监控]]中，预期[[总水钱]] ${matchTrendSummary.totalExpectedWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}，实际[[总水钱]] ${matchTrendSummary.totalActualWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}，[[净偏离值]] ${matchTrendSummary.totalWaterDiff > 0 ? "+" : ""}${matchTrendSummary.totalWaterDiff.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}。共有 ${matchTrendSummary.deficitMatches} 场比赛存在[[实际水钱低于预期]]（产生[[水钱流失]]）的情况，累计流失金额达 [[red:${matchTrendSummary.totalLostWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]。`,
+              `全场[[水钱监控]]中，预期[[总水钱]] [[blue:${matchTrendSummary.totalExpectedWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]（[[预期抽水率]] [[blue:${matchTrendSummary.expectedWaterRate.toFixed(2)}%]]），实际[[总水钱]] [[blue:${matchTrendSummary.totalActualWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]（[[实际抽水率]] [[blue:${matchTrendSummary.actualWaterRate.toFixed(2)}%]]），[[净偏离值]] [[red:${matchTrendSummary.totalWaterDiff > 0 ? "+" : ""}${matchTrendSummary.totalWaterDiff.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]（[[抽水差]] [[red:${matchTrendSummary.waterRateDiff.toFixed(2)}%]]）。`,
             )}
           </p>
         </SummaryBox>
@@ -1304,18 +1311,29 @@ export const MatchVolumeRateChart = ({
                 )}
                 className="font-mono font-black tracking-tighter"
               />
-              <span className="text-sm text-slate-900 font-bold">
-                (
-                {(
-                  (Math.abs(matchTrendSummary.totalWaterDiff) /
-                    matchTrendSummary.totalExpectedWater) *
-                  100
-                ).toFixed(1)}
-                %)
-              </span>
             </div>
            
           </div>
+        </div>
+
+        {/* 预期水钱标准 */}
+        <div className="mt-6 mb-6 p-4 bg-slate-50 rounded-xl border border-slate-200/60">
+          <p className="text-sm text-slate-950 font-bold leading-relaxed mb-1.5 flex items-start gap-2">
+            <span className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 shrink-0" />
+            <span>
+              {highlightNumbers(
+                "[[对比方式]]：基于玩法盘口的实际赔率算出实际抽水与其预设抽水进行对比。",
+              )}
+            </span>
+          </p>
+          <p className="text-sm text-slate-950 font-bold leading-relaxed flex items-start gap-2">
+            <span className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 shrink-0" />
+            <span>
+              {highlightNumbers(
+                "[[预期标准]]：早盘：[[全场大小 0.1]]、[[全场让球 0.08]]、[[上半场大小 0.1]]、[[上半场让球 0.1]]；滚球：[[全场大小 0.12]]、[[全场让球 0.1]]、[[上半场大小 0.12]]、[[上半场让球 0.12]]。",
+              )}
+            </span>
+          </p>
         </div>
 
          {/* 全部赛事水钱分析 */}
@@ -1328,10 +1346,88 @@ export const MatchVolumeRateChart = ({
             <SummaryBox>
               <p className="text-base text-slate-950 font-bold leading-relaxed">
                 {highlightNumbers(
-                  `在全场 [[${waterDiffMatchData.length} 场赛事]] 中，共有 [[${matchTrendSummary.deficitMatches} 场]] 出现实际水钱低于预期（占比 [[${((matchTrendSummary.deficitMatches / waterDiffMatchData.length) * 100).toFixed(1)}%]]）；另有 [[${waterDiffMatchData.length - matchTrendSummary.deficitMatches} 场]] 水钱超过预期。低预期赛事的单场偏离幅度显著高于超预期赛事，呈现明显的 [[亏水特征]]。`,
+                  `在全场 [[blue:${waterDiffMatchData.length} 场赛事]] 中，共有 [[red:${matchTrendSummary.deficitMatches} 场]] 出现实际水钱低于预期（占比 [[red:${((matchTrendSummary.deficitMatches / waterDiffMatchData.length) * 100).toFixed(2)}%]]），合计达 [[red:${matchTrendSummary.totalLostWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]；另有 [[blue:${waterDiffMatchData.length - matchTrendSummary.deficitMatches} 场]] 水钱超过预期，合计达 [[green:${positiveWaterAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]。低预期赛事的单场偏离幅度显著高于超预期赛事，呈现明显的 [[red:亏水特征]]。`,
                 )}
               </p>
             </SummaryBox>
+          </div>
+
+          {/* 不同赛事阶段的水钱表现卡片 */}
+          <div className="mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+              {[
+                { label: "小组赛", count: 72, volume: 837127.57, winLoss: 5178.77, expectedWater: 24122.26, actualWater: 22213.08, waterDiff: -1909.18, rateDiff: -0.23 },
+                { label: "32强", count: 16, volume: 242439.99, winLoss: -2931.27, expectedWater: 7015.84, actualWater: 6874.78, waterDiff: -141.06, rateDiff: -0.06 },
+                { label: "16强", count: 8, volume: 135281.08, winLoss: 526.84, expectedWater: 3912.80, actualWater: 4163.80, waterDiff: 251.00, rateDiff: 0.19 },
+                { label: "8强", count: 4, volume: 72819.91, winLoss: 4954.66, expectedWater: 2090.17, actualWater: 2105.87, waterDiff: 15.70, rateDiff: 0.02 },
+                { label: "半决赛", count: 2, volume: 36432.63, winLoss: 7028.81, expectedWater: 1083.18, actualWater: 1134.31, waterDiff: 51.13, rateDiff: 0.14 },
+                { label: "季军赛", count: 1, volume: 16799.38, winLoss: -1039.36, expectedWater: 497.70, actualWater: 454.81, waterDiff: -42.89, rateDiff: -0.26 },
+                { label: "冠军赛", count: 1, volume: 21029.86, winLoss: 6266.31, expectedWater: 603.57, actualWater: 467.46, waterDiff: -136.11, rateDiff: -0.65 },
+              ].map((stage) => {
+                const isLoss = stage.waterDiff < 0;
+
+                return (
+                  <div
+                    key={stage.label}
+                    className="p-3.5 rounded-xl border border-slate-200/70 bg-slate-50/50 flex flex-col justify-between shadow-xs"
+                  >
+                    <div className="flex items-center justify-between gap-1 mb-2 border-b border-slate-200/60 pb-1.5">
+                      <span className="text-[13px] font-black text-slate-950 truncate">
+                        {stage.label}
+                      </span>
+                      <span className="text-[10px] text-slate-950 font-bold bg-slate-200/60 px-1.5 py-0.5 rounded-md whitespace-nowrap">
+                        {stage.count} 场
+                      </span>
+                    </div>
+                    <div className="space-y-1.5 text-xs">
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-950 font-bold">预期水钱</span>
+                        <span className="font-mono font-bold text-slate-950">
+                          {stage.expectedWater.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-950 font-bold">实际水钱</span>
+                        <span className="font-mono font-bold text-slate-950">
+                          {stage.actualWater.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between border-t border-slate-200/50 pt-1.5">
+                        <span className="text-slate-950 font-bold">水钱差</span>
+                        <span
+                          className={`font-mono font-black ${
+                            isLoss ? "text-rose-600" : "text-emerald-600"
+                          }`}
+                        >
+                          {stage.waterDiff > 0 ? "+" : ""}
+                          {stage.waterDiff.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-950 font-bold">抽水率差</span>
+                        <span
+                          className={`font-mono font-black ${
+                            isLoss ? "text-rose-600" : "text-emerald-600"
+                          }`}
+                        >
+                          {stage.rateDiff > 0 ? "+" : ""}
+                          {stage.rateDiff.toFixed(2)}%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -1339,7 +1435,7 @@ export const MatchVolumeRateChart = ({
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={waterDiffMatchData}
-              margin={{ top: 20, right: 16, left: 16, bottom: 12 }}
+              margin={{ top: 20, right: 20, left: 20, bottom: 12 }}
             >
               <CartesianGrid
                 strokeDasharray="3 3"
@@ -1350,21 +1446,23 @@ export const MatchVolumeRateChart = ({
                 dataKey="matchNo"
                 axisLine={false}
                 tickLine={false}
+                padding={{ left: 10, right: 10 }}
                 tick={{
                   fill: "#64748b",
-                  fontSize: 11,
+                  fontSize: 13,
                   fontFamily: "monospace",
                   fontWeight: 700,
                 }}
               />
               <YAxis
                 yAxisId="left"
+                width={60}
                 axisLine={false}
                 tickLine={false}
                 domain={waterYDomain}
                 tick={{
                   fill: "#64748b",
-                  fontSize: 11,
+                  fontSize: 13,
                   fontFamily: "monospace",
                   fontWeight: 700,
                 }}
@@ -1372,20 +1470,17 @@ export const MatchVolumeRateChart = ({
               <YAxis
                 yAxisId="right"
                 orientation="right"
+                width={60}
                 axisLine={false}
                 tickLine={false}
-                tick={{
-                  fill: "#64748b",
-                  fontSize: 11,
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                }}
+                tick={false}
+                domain={waterYDomain}
               />
 
-              <ReferenceLine yAxisId="left" y={0} stroke="#cbd5e1" strokeWidth={1.5} />
+              <ReferenceLine y={0} stroke="#cbd5e1" strokeWidth={1.5} />
               {/* Tooltip removed to disable interaction */}
 
-              <Bar yAxisId="left" dataKey="waterDiff" barSize={10} isAnimationActive={false}>
+              <Bar dataKey="waterDiff" yAxisId="left" barSize={10} isAnimationActive={false}>
                 {waterDiffMatchData.map((entry, idx) => {
                   const isPositive = entry.waterDiff >= 0;
                   return (
@@ -1410,7 +1505,7 @@ export const MatchVolumeRateChart = ({
             <SummaryBox>
               <p className="text-base text-slate-950 font-bold leading-relaxed">
                 {highlightNumbers(
-                  "在 [[4个核心玩法]] 中，有 [[3个是亏水]] 状态（实际水钱低于预期标准），其中 [[全场大小]] 亏水 [[red:-1,960.05]]，[[全场让球]] 亏水 [[red:-191.74]]，[[上半场让球]] 亏水 [[red:-111.73]]；仅 [[上半场大小]] 录得 [[green:+479.96]] 的正向偏离。",
+                  "在 [[blue:4个核心玩法]] 中，有 [[red:3个是亏水]] 状态（实际水钱低于预期标准），其中 [[全场大小]] 亏水 [[red:-2,141.05]]，[[全场让球]] 亏水 [[red:-158.53]]，[[上半场让球]] 亏水 [[red:-94.87]]；仅 [[上半场大小]]  [[green:+483.04]] 的正向偏离。",
                 )}
               </p>
             </SummaryBox>
@@ -1422,16 +1517,16 @@ export const MatchVolumeRateChart = ({
               <thead className="bg-slate-100 shadow-none">
                 <tr className="border-b-2 border-slate-300 text-slate-950 font-black text-[11px] uppercase tracking-wider">
                   <th className="py-3 px-4 text-left border-r border-slate-300/80 bg-slate-100">
-                    玩法玩法类型/投注阶段
+                    玩法类型/投注阶段
                   </th>
                   <th className="py-3 px-3 text-right border-r border-slate-300/80 bg-slate-100">
-                    预期水钱盈利W
+                    预期水钱盈利
                   </th>
                   <th className="py-3 px-3 text-right border-r border-slate-300/80 bg-slate-100">
-                    实际水钱盈利W
+                    实际水钱盈利
                   </th>
                   <th className="py-3 px-3 text-right border-r border-slate-300/80 bg-slate-100">
-                    水钱盈利差W
+                    水钱盈利差
                   </th>
                   <th className="py-3 px-3 text-right border-r border-slate-300/80 bg-slate-100">
                     预期抽水率
@@ -1450,17 +1545,17 @@ export const MatchVolumeRateChart = ({
                     key={`water-playstyle-${index}`} 
                     className={`${item.isSub ? "bg-slate-50/30" : "bg-white font-bold"}`}
                   >
-                    <td className={`py-2.5 px-4 border-r border-slate-100 text-[11px] ${item.isSub ? "pl-10 text-slate-500 font-medium italic" : "text-slate-900 font-black"}`}>
+                    <td className={`py-2.5 px-4 border-r border-slate-100 text-[11px] ${item.isSub ? "pl-10 text-slate-950 font-bold italic" : "text-slate-950 font-black"}`}>
                       {!item.isSub ? "● " : "└ "}
                       {item.name}
                     </td>
-                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-600 border-r border-slate-100 text-[11px]">
+                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-950 font-bold border-r border-slate-100 text-[11px]">
                       {item.expectedWater.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
                     </td>
-                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-600 border-r border-slate-100 text-[11px]">
+                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-950 font-bold border-r border-slate-100 text-[11px]">
                       {item.actualWater.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
@@ -1475,10 +1570,10 @@ export const MatchVolumeRateChart = ({
                         className="font-black"
                       />
                     </td>
-                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-600 border-r border-slate-100 text-[11px]">
+                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-950 font-bold border-r border-slate-100 text-[11px]">
                       {item.expectedRate.toFixed(2)}%
                     </td>
-                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-600 border-r border-slate-100 text-[11px]">
+                    <td className="py-2.5 px-3 text-right font-mono tabular-nums text-slate-950 font-bold border-r border-slate-100 text-[11px]">
                       {item.actualRate.toFixed(2)}%
                     </td>
                     <td className="py-2.5 px-3 text-right font-mono tabular-nums text-[11px]">
@@ -1500,42 +1595,36 @@ export const MatchVolumeRateChart = ({
                     总计
                   </td>
                   <td className="py-3 px-3 text-right font-mono tabular-nums border-r border-slate-200 text-[11px]">
-                    37,158.06
+                    {matchTrendSummary.totalExpectedWater.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                   <td className="py-3 px-3 text-right font-mono tabular-nums border-r border-slate-200 text-[11px]">
-                    35,357.53
+                    {matchTrendSummary.totalActualWater.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                   <td className="py-3 px-3 text-right font-mono tabular-nums border-r border-slate-200 text-[11px]">
-                    -1,783.55
+                    {matchTrendSummary.totalWaterDiff.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </td>
                   <td className="py-3 px-3 text-right font-mono tabular-nums border-r border-slate-200 text-[11px]">
-                    2.88%
+                    {matchTrendSummary.expectedWaterRate.toFixed(2)}%
                   </td>
                   <td className="py-3 px-3 text-right font-mono tabular-nums border-r border-slate-200 text-[11px]">
-                    2.75%
+                    {matchTrendSummary.actualWaterRate.toFixed(2)}%
                   </td>
                   <td className="py-3 px-3 text-right font-mono tabular-nums text-[11px]">
-                    -0.14%
+                    {matchTrendSummary.waterRateDiff.toFixed(2)}%
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </div>
-
-
-        {/* 预期水钱标准 */}
-        <div className="mt-8 border-t border-slate-200 pt-6">
-          <p className="text-base text-slate-600 font-medium leading-relaxed mb-2">
-            {highlightNumbers(
-              "[[预期水钱标准]]：基于核心玩法的实际赔率算出实际抽水与其预设抽水进行对比。",
-            )}
-          </p>
-          <p className="text-base text-slate-600 font-medium leading-relaxed">
-            {highlightNumbers(
-              "早盘：[[全场大小 0.1]]、[[全场让球 0.08]]、[[上半场大小 0.1]]、[[上半场让球 0.1]]；滚球：[[全场大小 0.12]]、[[全场让球 0.1]]、[[上半场大小 0.12]]、[[上半场让球 0.12]]。",
-            )}
-          </p>
         </div>
       </div>
     </>

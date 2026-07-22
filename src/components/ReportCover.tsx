@@ -44,14 +44,14 @@ export const ReportCover: React.FC = () => {
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
           {FA.reportTitle}
         </h1>
-        <div className="flex gap-10 text-sm text-slate-500 mb-2">
+        <div className="flex gap-10 text-sm text-slate-900 font-bold mb-2">
           <div className="flex items-center gap-2">
             <span>数据周期:</span>
-            <span className="font-semibold text-slate-800">{FA.navTitle}</span>
+            <span className="font-bold text-slate-950">{FA.navTitle}</span>
           </div>
           <div className="flex items-center gap-2">
             <span>报告日期:</span>
-            <span className="font-semibold text-slate-800">
+            <span className="font-bold text-slate-950">
               {FA.reportDate}
             </span>
           </div>
@@ -77,14 +77,14 @@ export const ReportCover: React.FC = () => {
               <div className="pl-6 space-y-4">
                 {section.paths.map((path) => (
                   <div key={path.title} className="space-y-2">
-                    <div className="text-sm font-medium text-slate-700">
+                    <div className="text-sm font-bold text-slate-900">
                       {path.title}
                     </div>
                     <div className="pl-6 flex flex-col space-y-1.5 border-l border-slate-100">
                       {path.items.map((item) => (
                         <div
                           key={item.title}
-                          className="text-xs text-slate-500"
+                          className="text-xs font-bold text-slate-900"
                         >
                           {item.title}
                         </div>

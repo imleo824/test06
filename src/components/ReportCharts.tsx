@@ -79,7 +79,7 @@ export const InterceptTypeBarChart: React.FC = () => {
             cursor={{ fill: "transparent" }}
             formatter={(value: any, name: any) => {
               if (name === "amount")
-                return [`${Number(value).toLocaleString()} 万`, "拦截金额"];
+                return [`${Number(value).toLocaleString()}`, "拦截金额"];
               return [value, name];
             }}
           />

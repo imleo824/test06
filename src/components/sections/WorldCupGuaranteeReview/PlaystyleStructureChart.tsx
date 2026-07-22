@@ -94,8 +94,6 @@ export const PlaystyleStructureChart = () => {
                   <span className="text-lg font-black text-slate-950 uppercase tracking-tight">
                     1. 按流水结构
                   </span>
-                  <span className="text-xs text-slate-500 font-bold">
-                  </span>
                 </div>
                 <div className="h-[300px] w-full bg-slate-50/50 rounded-xl p-3 border border-slate-200/40">
                   <ResponsiveContainer width="100%" height="100%">
@@ -149,7 +147,7 @@ export const PlaystyleStructureChart = () => {
                                 fontSize={11}
                                 fontWeight="bold"
                               >
-                                {`${value}% (${item.volume.toLocaleString()})`}
+                                {`${Number(value).toFixed(2)}% (${item.volume.toLocaleString()})`}
                               </text>
                             );
                           }}
@@ -165,8 +163,6 @@ export const PlaystyleStructureChart = () => {
                 <div className="flex items-baseline justify-between border-b border-slate-100 pb-2">
                   <span className="text-lg font-black text-slate-950 uppercase tracking-tight">
                     2. 按人数结构
-                  </span>
-                  <span className="text-xs text-slate-500 font-bold">
                   </span>
                 </div>
                 <div className="h-[300px] w-full bg-slate-50/50 rounded-xl p-3 border border-slate-200/40">
@@ -221,7 +217,7 @@ export const PlaystyleStructureChart = () => {
                                 fontSize={11}
                                 fontWeight="bold"
                               >
-                                {`${value}% (${Math.round(item.users / 104).toLocaleString()} 人/场均)`}
+                                {`${Number(value).toFixed(2)}% (${Math.round(item.users / 104).toLocaleString()} 人/场均)`}
                               </text>
                             );
                           }}
@@ -276,7 +272,7 @@ export const PlaystyleStructureChart = () => {
                               : "text-slate-900 font-black text-sm font-mono"
                           }
                         >
-                          {`${volumeShare.toFixed(1)}% (${volumeVal.toLocaleString()})`}
+                          {`${Number(volumeShare).toFixed(2)}% (${volumeVal.toLocaleString()})`}
                         </span>
                       </div>
                       <div
@@ -323,7 +319,7 @@ export const PlaystyleStructureChart = () => {
                           {item.dimension}比例分析
                         </span>
                         <span className="text-sm text-slate-900 font-bold">
-                          按流水占比
+                          流水占比
                         </span>
                       </div>
                       <div className="space-y-4">

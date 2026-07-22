@@ -26,7 +26,7 @@ export function highlightNumbers(
         result.push(
           <span
             key={match.index}
-            className="text-emerald-600 font-black mx-0.5"
+            className="text-emerald-700 font-black font-mono mx-0.5"
           >
             {phrase.substring(6)}
           </span>,
@@ -36,8 +36,26 @@ export function highlightNumbers(
       }
       if (phrase.startsWith("red:")) {
         result.push(
-          <span key={match.index} className="text-rose-600 font-black mx-0.5">
+          <span key={match.index} className="text-rose-700 font-black font-mono mx-0.5">
             {phrase.substring(4)}
+          </span>,
+        );
+        lastIndex = pattern.lastIndex;
+        continue;
+      }
+      if (phrase.startsWith("blue:")) {
+        result.push(
+          <span key={match.index} className="text-blue-700 font-black font-mono mx-0.5">
+            {phrase.substring(5)}
+          </span>,
+        );
+        lastIndex = pattern.lastIndex;
+        continue;
+      }
+      if (phrase.startsWith("amber:")) {
+        result.push(
+          <span key={match.index} className="text-amber-700 font-black font-mono mx-0.5">
+            {phrase.substring(6)}
           </span>,
         );
         lastIndex = pattern.lastIndex;
@@ -54,41 +72,31 @@ export function highlightNumbers(
         (phrase.startsWith("-") || parseFloat(numericValue) < 0)
       ) {
         result.push(
-          <span key={match.index} className="text-rose-600 font-black mx-0.5">
+          <span key={match.index} className="text-rose-700 font-black font-mono mx-0.5">
             {phrase}
           </span>,
         );
       } else if (
         isNumber &&
-        (phrase.startsWith("+") || parseFloat(numericValue) > 0)
+        phrase.startsWith("+")
       ) {
-        // 只有显式包含 + 或者明确是金额/比率正数时才变绿（避免普通日期或人次变绿）
-        const shouldBeGreen =
-          phrase.startsWith("+") ||
-          (phrase.includes(".") && !phrase.includes("人"));
-
-        if (shouldBeGreen) {
-          result.push(
-            <span
-              key={match.index}
-              className="text-emerald-600 font-black mx-0.5"
-            >
-              {phrase.startsWith("+") ? phrase.substring(1) : phrase}
-            </span>,
-          );
-        } else {
-          result.push(
-            <span
-              key={match.index}
-              className="relative inline-block mx-0.5 group"
-            >
-              <span className="text-slate-950 font-black relative z-10">
-                {phrase}
-              </span>
-              <span className="absolute bottom-0.5 left-0 w-full h-[1.5px] bg-blue-500/35 z-0"></span>
-            </span>,
-          );
-        }
+        result.push(
+          <span
+            key={match.index}
+            className="text-emerald-700 font-black font-mono mx-0.5"
+          >
+            {phrase.substring(1)}
+          </span>,
+        );
+      } else if (isNumber) {
+        result.push(
+          <span
+            key={match.index}
+            className={`${colorClass} font-mono mx-0.5`}
+          >
+            {phrase}
+          </span>,
+        );
       } else {
         result.push(
           <span
@@ -98,7 +106,7 @@ export function highlightNumbers(
             <span className="text-slate-950 font-black relative z-10">
               {phrase}
             </span>
-            <span className="absolute bottom-0.5 left-0 w-full h-[1.5px] bg-blue-500/35 z-0"></span>
+            <span className="absolute bottom-0.5 left-0 w-full h-[2px] bg-blue-500/25 z-0"></span>
           </span>,
         );
       }
@@ -109,7 +117,7 @@ export function highlightNumbers(
         result.push(
           <strong
             key={match.index}
-            className="font-mono tracking-tight mx-0.5 text-emerald-600 font-black"
+            className="font-mono tracking-tight mx-0.5 text-emerald-700 font-black"
           >
             {part.substring(1)}
           </strong>,
@@ -118,31 +126,7 @@ export function highlightNumbers(
         result.push(
           <strong
             key={match.index}
-            className="font-mono tracking-tight mx-0.5 text-rose-600 font-black"
-          >
-            {part}
-          </strong>,
-        );
-      } else if (/([人场项倍个]|ms|min|h)$/.test(part.trim())) {
-        // 数量或特定单位，保持默认黑色高亮
-        result.push(
-          <strong
-            key={match.index}
-            className="text-slate-950 font-black font-mono tracking-tight mx-0.5"
-          >
-            {part}
-          </strong>,
-        );
-      } else if (
-        part.includes("%") ||
-        part.includes(".") ||
-        part.includes(",")
-      ) {
-        // 比例/盈利率，或带小数点的金额/千分位金额，默认为正向绿色高亮
-        result.push(
-          <strong
-            key={match.index}
-            className="font-mono tracking-tight mx-0.5 text-emerald-600 font-black"
+            className="font-mono tracking-tight mx-0.5 text-rose-700 font-black"
           >
             {part}
           </strong>,
@@ -151,7 +135,7 @@ export function highlightNumbers(
         result.push(
           <strong
             key={match.index}
-            className="text-slate-950 font-black font-mono tracking-tight mx-0.5"
+            className={`${colorClass} font-mono tracking-tight mx-0.5`}
           >
             {part}
           </strong>,
@@ -175,41 +159,62 @@ export const SummaryBox = ({
   icon,
   className = "",
   tone = "default",
+  hideIcon = false,
 }: {
   children: React.ReactNode;
   title?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   className?: string;
   tone?: "default" | "indigo" | "emerald" | "rose";
+  hideIcon?: boolean;
 }) => {
   const tones = {
     default: {
-      bg: "bg-slate-50/60",
-      border: "border-slate-200/50",
-      title: "text-slate-900",
+      bg: "bg-blue-50/30",
+      border: "border-blue-200/80",
+      title: "text-slate-950",
+      iconBg: "bg-blue-100/80",
+      iconBorder: "border-blue-200",
+      iconColor: "text-blue-700",
     },
     indigo: {
-      bg: "bg-indigo-50/30",
-      border: "border-indigo-200/40",
+      bg: "bg-indigo-50/40",
+      border: "border-indigo-200/80",
       title: "text-indigo-950",
+      iconBg: "bg-indigo-100/80",
+      iconBorder: "border-indigo-200",
+      iconColor: "text-indigo-700",
     },
     emerald: {
-      bg: "bg-emerald-50/30",
-      border: "border-emerald-200/40",
+      bg: "bg-emerald-50/40",
+      border: "border-emerald-200/80",
       title: "text-emerald-950",
+      iconBg: "bg-emerald-100/80",
+      iconBorder: "border-emerald-200",
+      iconColor: "text-emerald-700",
     },
     rose: {
-      bg: "bg-rose-50/30",
-      border: "border-rose-200/40",
+      bg: "bg-rose-50/40",
+      border: "border-rose-200/80",
       title: "text-rose-950",
+      iconBg: "bg-rose-100/80",
+      iconBorder: "border-rose-200",
+      iconColor: "text-rose-700",
     },
   };
 
   const style = tones[tone] || tones.default;
 
-  // Use a default margin-bottom of mb-6 unless overridden
   const hasMargin = className.match(/\b(m|m[tby])-\d+/);
-  const marginClass = hasMargin ? "" : "mb-6";
+  const marginClass = hasMargin ? "" : "mb-5";
+
+  const defaultIcon = (
+    <div className={`shrink-0 w-7 h-7 rounded-lg ${style.iconBg} border ${style.iconBorder} flex items-center justify-center ${style.iconColor} shadow-2xs mt-0.5`}>
+      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+  );
 
   return (
     <div
@@ -217,14 +222,21 @@ export const SummaryBox = ({
     >
       {title && (
         <div
-          className={`flex items-center gap-2 mb-2 ${style.title} font-black text-sm uppercase tracking-widest`}
+          className={`flex items-center gap-2 mb-2 ${style.title} font-black text-xs uppercase tracking-widest`}
         >
           {icon && <span>{icon}</span>}
           <span>{title}</span>
         </div>
       )}
-      <div className="text-base text-slate-900 font-medium leading-relaxed">
-        {children}
+      <div className="flex items-start gap-3">
+        {!hideIcon && (
+          <div className="shrink-0">
+            {icon || defaultIcon}
+          </div>
+        )}
+        <div className="text-base text-slate-950 font-bold leading-relaxed flex-1">
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -232,7 +244,7 @@ export const SummaryBox = ({
 
 export const SignColoredValue = ({
   value,
-  className = "font-mono font-black",
+  className = "font-mono font-black tabular-nums",
 }: {
   value: string | number;
   className?: string;
@@ -251,7 +263,7 @@ export const SignColoredValue = ({
   const displayValue =
     isPositive && str.startsWith("+") ? str.substring(1) : str;
 
-  return <span className={`${colorClass} ${className}`}>{displayValue}</span>;
+  return <span className={`font-mono tabular-nums ${colorClass} ${className}`}>{displayValue}</span>;
 };
 
 export const UnitNumber = ({
@@ -267,10 +279,10 @@ export const UnitNumber = ({
 }) => {
   const showUnit = unit && !["E", "万", "亿", "万元", "亿元"].includes(unit);
   return (
-    <div className="flex items-baseline gap-1.5">
+    <div className="flex items-baseline gap-1.5 font-mono tabular-nums">
       <SignColoredValue value={value} className={`${className}`} />
       {showUnit && (
-        <span className={`font-semibold text-slate-800 ${unitClassName}`}>
+        <span className={`font-sans font-semibold text-slate-800 ${unitClassName}`}>
           {unit}
         </span>
       )}
@@ -283,7 +295,7 @@ export const MetricTile = ({
   value,
   unit,
   detail,
-  valueClassName = "text-3xl sm:text-4xl font-mono font-black",
+  valueClassName = "text-3xl sm:text-4xl font-mono font-black tabular-nums",
   tone = "default",
 }: {
   label: string;
@@ -295,7 +307,7 @@ export const MetricTile = ({
 }) => {
   const showUnit = unit && !["E", "万", "亿", "万元", "亿元"].includes(unit);
   return (
-    <div className="rounded-2xl bg-white p-6 border border-slate-200 shadow-none">
+    <div className="rounded-2xl bg-white p-6 border border-slate-200/90 shadow-sm">
       <div className="mb-3 text-sm font-black uppercase tracking-wider text-slate-800">
         {label}
         {showUnit ? ` (${unit})` : ""}

@@ -24,6 +24,7 @@ import {
 } from "./data";
 import { MatchVolumeRateChart } from "./MatchVolumeRateChart";
 import { SystemToolsEffectiveness } from "./SystemToolsEffectiveness";
+import AuditVolumeStats from "./AuditVolumeStats";
 import { SiteNewUserRiskControlStats } from "./SiteNewUserRiskControlStats";
 import { ActivityBonusRatioRiskControlStats } from "./ActivityBonusRatioRiskControlStats";
 import { PlaystyleStructureChart } from "./PlaystyleStructureChart";
@@ -185,245 +186,247 @@ export const WorldCupGuaranteeReview: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-slate-200 pb-2.5">
-        <h2 className="text-xl md:text-2xl font-black tracking-tighter text-slate-950">
-          1. 数据概览
-        </h2>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-slate-200/90 pb-3">
+        <div className="flex items-center gap-3">
+          <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0" />
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight text-slate-950">
+            1. 数据概览
+          </h2>
+        </div>
       </div>
 
-      <SummaryBox>
+      <SummaryBox tone="default">
         {highlightNumbers(
-          `赛事场次翻倍（[[104场]] vs [[51场]]），[[总流水]]达 [[green:${matchTrendSummary.totalVolume.toLocaleString()}]]（同比 [[green:+64.5%]]），[[盈利率]]为 [[4.51%]] ，[[盈利额]]为 [[green:${matchTrendSummary.totalWinLoss.toLocaleString()}]]（同比 [[green:+61.3%]]）；`,
+          `赛事场次翻倍（[[104场]] vs [[51场]]），[[总流水]]达 [[green:${matchTrendSummary.totalVolume.toLocaleString()}]]（同比 [[green:+64.5%]]），[[盈利率]]为 [[4.51%]]（同比 [[red:-0.09%]]），[[盈利额]]为 [[green:${matchTrendSummary.totalWinLoss.toLocaleString()}]]（同比 [[green:+61.3%]]）；`,
         )}
       </SummaryBox>
 
-      <div className="space-y-4 mt-3 mb-6">
-        <div className="space-y-4">
+      <div className="space-y-6 mt-4 mb-8">
+        <div>
           {/* 核心经营表现指标对比表格 */}
-          <div>
-            <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-none">
-              <table className="w-full border-collapse text-left">
-                <thead>
-                  <tr className="border-b border-slate-200 bg-slate-50/50">
-                    <th className="p-4 text-sm font-black text-slate-950 tracking-wider">
-                      核心指标
-                    </th>
-                    <th className="p-4 text-sm font-black text-blue-700 tracking-wider text-right">
-                      本届SJB
-                    </th>
-                    <th className="p-4 text-sm font-black text-slate-900 tracking-wider text-right">
-                      上届OZB{" "}
-                    </th>
-                    <th className="p-4 text-sm font-black text-slate-950 tracking-wider text-right">
-                      对比
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900">
-                      总场次
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      104 场
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      51 场
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-emerald-600 text-right">
-                      +53 场 (+103.9%)
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900">
-                      总流水
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      {matchTrendSummary.totalVolume.toLocaleString()}
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      1,462,828.5
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-emerald-600 text-right">
-                      +943,942.5(+64.5%)
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900 pl-8">
-                      ↳ 场均流水
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      23,142.0
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      28,682.9
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-rose-600 text-right">
-                      -5,540.9(-19.3%)
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900">
-                      盈利额
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      108,508
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      67,254.7
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-emerald-600 text-right">
-                      +41,253.3(+61.3%)
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900">
-                      盈利率
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      {matchTrendSummary.averageHoldRate}%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      4.60%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-rose-600 text-right">
-                      -0.09%
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900 pl-8">
-                      ↳ 全场让球
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      1.11%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      1.30%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-rose-600 text-right">
-                      -0.19%
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900 pl-8">
-                      ↳ 全场大小
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      1.48%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      1.80%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-rose-600 text-right">
-                      -0.32%
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900">
-                      过盘率
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      50.76%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      42.11%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-emerald-600 text-right">
-                      +8.65%
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900 pl-8">
-                      ↳ 全场让球
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      49.48%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      39.13%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-emerald-600 text-right">
-                      +10.35%
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900 pl-8">
-                      ↳ 全场大小
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      52.00%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      44.90%
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-emerald-600 text-right">
-                      +7.10%
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900">
-                      单场最大盈利
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      21,113
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      1,628.8
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-emerald-600 text-right">
-                      +19,484.2 (+1,196.2%)
-                    </td>
-                  </tr>
-                  <tr className="">
-                    <td className="p-4 text-base font-bold text-slate-900">
-                      单场最大亏损
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-blue-600 text-right bg-blue-50/30">
-                      -8,483
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-slate-500 text-right">
-                      -2,293.3
-                    </td>
-                    <td className="p-4 text-base font-mono font-black text-rose-600 text-right">
-                      -6,189.7 (+269.9%)
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <div className="overflow-x-auto rounded-2xl border border-slate-200/90 bg-white shadow-sm">
+            <table className="w-full border-collapse text-left text-sm font-semibold">
+              <thead>
+                <tr className="border-b-2 border-slate-200 bg-slate-100 text-slate-950 font-black uppercase text-xs tracking-wider">
+                  <th className="p-4 text-slate-950 font-black">
+                    核心指标
+                  </th>
+                  <th className="p-4 text-blue-800 font-black tracking-wider text-right">
+                    本届SJB
+                  </th>
+                  <th className="p-4 text-slate-800 font-black tracking-wider text-right">
+                    上届OZB
+                  </th>
+                  <th className="p-4 text-slate-950 font-black tracking-wider text-right">
+                    对比
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold">
+                    总场次
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    104 场
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    51 场
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-emerald-700 text-right">
+                    +53 场 (+103.9%)
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold">
+                    总流水
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    {matchTrendSummary.totalVolume.toLocaleString()}
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    1,462,828.5
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-emerald-700 text-right">
+                    +943,942.5 (+64.5%)
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-800 font-medium pl-8">
+                    ↳ 场均流水
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    23,142.0
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    28,682.9
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    -5,540.9 (-19.3%)
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold">
+                    盈利额
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    {matchTrendSummary.totalWinLoss.toLocaleString()}
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    67,254.7
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-emerald-700 text-right">
+                    +41,253.3 (+61.3%)
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold">
+                    盈利率
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    {matchTrendSummary.averageHoldRate.toFixed(2)}%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    4.60%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    -0.09%
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold pl-8">
+                    ↳ 全场让球
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    1.11%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    1.30%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    -0.19%
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold pl-8">
+                    ↳ 全场大小
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    1.48%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    1.80%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    -0.32%
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold">
+                    过盘率
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right bg-rose-50/40">
+                    50.76%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    42.11%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    +8.65%
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold pl-8">
+                    ↳ 全场让球
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right bg-rose-50/40">
+                    49.48%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    39.13%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    +10.35%
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold pl-8">
+                    ↳ 全场大小
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right bg-rose-50/40">
+                    52.00%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    44.90%
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    +7.10%
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold">
+                    单场最大盈利
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-blue-700 text-right bg-blue-50/40">
+                    21,113
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    1,628.8
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-emerald-700 text-right">
+                    +19,484.2 (+1,196.2%)
+                  </td>
+                </tr>
+                <tr className="odd:bg-white even:bg-slate-50/40">
+                  <td className="p-4 text-slate-950 font-bold">
+                    单场最大亏损
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right bg-rose-50/40">
+                    -8,483
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-bold text-slate-950 text-right">
+                    -2,293.3
+                  </td>
+                  <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right">
+                    -6,189.7 (+269.9%)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-10 mb-4 border-b border-slate-200 pb-2.5">
-        <h2 className="text-xl md:text-2xl font-black tracking-tighter text-slate-950">
-          2. 投注表现
-        </h2>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-slate-200/90 pb-3 mt-10">
+        <div className="flex items-center gap-3">
+          <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0" />
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight text-slate-950">
+            2. 投注表现
+          </h2>
+        </div>
       </div>
 
-      <div className="space-y-4 mb-5">
-
-
+      <div className="space-y-4 mb-6">
         <SummaryBox>
           <p className="text-base text-slate-950 font-bold leading-relaxed mb-3">
             {highlightNumbers(
-              `总流水 [[${matchTrendSummary.totalVolume.toLocaleString()}]]，场均流水 [[23,142]]；其中[[单场最大流水]]达 [[${matchTrendExtremes.maxVolume.volume.toLocaleString()}]]（7/20 西班牙 v 阿根廷 0:0(1:0)），[[单场最小流水]]为 [[${matchTrendExtremes.minVolume.volume.toLocaleString()}]]（6/26 库拉索 v 科特迪瓦 0:2）。`,
+              `总流水 [[blue:${matchTrendSummary.totalVolume.toLocaleString()}]]，场均流水 [[blue:23,142]]；其中[[单场最大流水]]达 [[blue:${matchTrendExtremes.maxVolume.volume.toLocaleString()}]]（7/20 西班牙 v 阿根廷 0:0(1:0)），[[单场最小流水]]为 [[blue:${matchTrendExtremes.minVolume.volume.toLocaleString()}]]（6/26 库拉索 v 科特迪瓦 0:2）。`,
             )}
           </p>
           <ul className="space-y-2">
-            <li className="flex items-start gap-2 text-sm text-slate-600 font-medium">
-              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+            <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0" />
               <span>
                 {highlightNumbers(
-                  "按流水结构：核心仍由[[全场让球]]（25.86%）与[[全场大小]]（23.56%）驱动，[[超大额玩家]]投注高度集中于核心盘口。",
+                  "[[按流水结构]]：核心仍由[[全场让球]]（[[blue:25.86%]]）与[[全场大小]]（[[blue:23.56%]]）驱动，[[老玩家]]投注高度集中于核心盘口。",
                 )}
               </span>
             </li>
-            <li className="flex items-start gap-2 text-sm text-slate-600 font-medium">
-              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+            <li className="flex items-start gap-2 text-sm text-slate-950 font-bold">
+              <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0" />
               <span>
                 {highlightNumbers(
-                  "按人数结构：大杯赛[[波胆]]下注比例远超常规联赛；[[常规玩家]]偏向主玩法以大博小，[[新玩家]]则倾向高倍数玩法追求[[以小博大]]。",
+                  "[[按人数结构]]：大杯赛[[波胆]]下注比例远超常规联赛；[[老玩家]]偏向主玩法以大博小，[[新玩家]]则倾向高倍数玩法追求[[以小博大]]。",
                 )}
               </span>
             </li>
@@ -435,30 +438,31 @@ export const WorldCupGuaranteeReview: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-10 mb-4 border-b border-slate-200 pb-2.5">
-        <h2 className="text-xl md:text-2xl font-black tracking-tighter text-slate-950">
-          3. 操盘表现
-        </h2>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-slate-200/90 pb-3 mt-10">
+        <div className="flex items-center gap-3">
+          <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0" />
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight text-slate-950">
+            3. 操盘表现
+          </h2>
+        </div>
       </div>
 
-      <div className="space-y-4 mb-5">
-
-
+      <div className="space-y-4 mb-6">
         <SummaryBox>
           <ul className="space-y-3">
-            <li className="flex items-start gap-2 text-base text-slate-600 font-medium leading-relaxed">
-              <div className="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+            <li className="flex items-start gap-2 text-base text-slate-950 font-bold leading-relaxed">
+              <div className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0" />
               <span>
                 {highlightNumbers(
-                  `1. [[盈利表现]]：[[总盈利额]] ${matchTrendSummary.totalWinLoss.toLocaleString()}，核心[[盈利率]] ${matchTrendSummary.averageHoldRate}%`,
+                  `1. [[盈利表现]]：[[总盈利额]] [[green:${matchTrendSummary.totalWinLoss.toLocaleString()}]]，[[盈利率]] [[blue:${Number(matchTrendSummary.averageHoldRate).toFixed(2)}%]]`,
                 )}
               </span>
             </li>
-            <li className="flex items-start gap-2 text-base text-slate-600 font-medium leading-relaxed">
-              <div className="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400 shrink-0" />
+            <li className="flex items-start gap-2 text-base text-slate-950 font-bold leading-relaxed">
+              <div className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0" />
               <span>
                 {highlightNumbers(
-                  `2. [[水钱表现]]：[[预期抽水率]] 2.884%，[[预期水钱W]] 37,140.37，[[实际水钱W]] 35,356.51，[[水钱差W]] -1,783.925，[[实际抽水率]] 2.746%`,
+                  `2. [[水钱表现]]：[[预期抽水率]] [[blue:${matchTrendSummary.expectedWaterRate.toFixed(2)}%]]，[[预期水钱]] [[blue:${matchTrendSummary.totalExpectedWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]，[[实际抽水率]] [[blue:${matchTrendSummary.actualWaterRate.toFixed(2)}%]]，[[实际水钱]] [[blue:${matchTrendSummary.totalActualWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]，[[抽水差]] [[red:${matchTrendSummary.waterRateDiff.toFixed(2)}%]]，[[水钱差]] [[red:${matchTrendSummary.totalWaterDiff.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]`,
                 )}
               </span>
             </li>
@@ -471,10 +475,13 @@ export const WorldCupGuaranteeReview: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-10 mb-4 border-b border-slate-200 pb-2.5">
-        <h2 className="text-xl md:text-2xl font-black tracking-tighter text-slate-950">
-          4. 业务复盘
-        </h2>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 border-b border-slate-200/90 pb-3 mt-10">
+        <div className="flex items-center gap-3">
+          <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0" />
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight text-slate-950">
+            4. 业务复盘
+          </h2>
+        </div>
         <div className="flex items-center gap-3 text-sm font-black text-slate-950 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
           <span>4.1 赛事保障</span>
           <span className="text-slate-300">/</span>
@@ -510,7 +517,7 @@ export const WorldCupGuaranteeReview: React.FC = () => {
         <SummaryBox>
           <p className="text-base text-slate-950 font-bold leading-relaxed">
             {highlightNumbers(
-              "[[SJB筹备阶段]]即建立[[C端风控监控]]与[[B端操盘协同机制]]。目前已实现[[异常发现、专人确认与15分钟协同反馈]]的闭环标准化流程；同时推动B端[[赔率联动优化]]覆盖 90% 以上核心玩法，保障整体流程运转的高效性。",
+              "[[SJB筹备阶段]]即建立[[C端风控监控]]与[[B端操盘协同机制]]。已实现[[异常发现、专人确认与15分钟协同反馈]]的闭环标准化流程；同时推动B端[[赔率联动]]覆盖 90% 以上进球类玩法，保障整体流程运转的高效性。",
             )}
           </p>
         </SummaryBox>
@@ -815,9 +822,9 @@ export const WorldCupGuaranteeReview: React.FC = () => {
         <CoreActionHeader index="4.1.2" title="C端体育拦截" />
 
         <SummaryBox>
-          <p className="text-base text-slate-600 font-medium leading-relaxed">
+          <p className="text-base text-slate-950 font-bold leading-relaxed">
             {highlightNumbers(
-              `SJB期间，全面实施[[系统预警、系统初审、系统分单与人工复审]]的标准化流程，累计拦截体育高危订单金额达 [[17,070.07 万]]，确保高风险订单[[精准有效拦截]]。`,
+              `SJB期间，全面实施[[系统预警、系统初审、系统分单与人工复审]]的标准化流程，累计拦截体育高危订单金额达 [[green:17,070.07]]，确保高风险订单[[有效拦截]]。`,
             )}
           </p>
         </SummaryBox>
@@ -842,9 +849,9 @@ export const WorldCupGuaranteeReview: React.FC = () => {
                     </div>
 
                     <div className="space-y-3">
-                      <div className="text-base text-slate-950 font-bold leading-relaxed">
+                      <SummaryBox className="my-2 p-3">
                         {highlightNumbers(step.summary)}
-                      </div>
+                      </SummaryBox>
 
                       <div>
                         <div className="mb-2 flex items-center justify-between gap-2 border-b border-slate-100 pb-1"></div>
@@ -866,14 +873,14 @@ export const WorldCupGuaranteeReview: React.FC = () => {
               <div className="border-b border-slate-100 pb-3 mb-4 flex-none">
                 <h5 className="text-base md:text-lg font-black text-slate-950 flex items-center gap-2 mb-3">
                   <Shield
-                    className="h-4.5 w-4.5 text-slate-500"
+                    className="h-4.5 w-4.5 text-slate-950"
                     strokeWidth={2}
                   />
                   <span>体育拦截类型</span>
                 </h5>
                 <SummaryBox className="mt-2 mb-0 p-3">
                   {highlightNumbers(
-                    "异常注单拦截以[[体育打水]]（81.24%）与[[批量打水套利]]（8.01%）为主，合计覆盖超过 89.25% 的[[重点拦截流水]]。",
+                    "异常注单拦截以[[体育打水]]（[[blue:81.24%]]）与[[批量打水套利]]（[[blue:8.01%]]）为主，合计覆盖超过 [[blue:89.25%]] 的[[重点拦截流水]]。",
                   )}
                 </SummaryBox>
                 <div className="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-3">
@@ -913,19 +920,23 @@ export const WorldCupGuaranteeReview: React.FC = () => {
           title="4.2 关联保障"
           rightContent={
             <div className="flex items-center gap-3 text-sm font-black text-slate-950">
-              <span>4.2.1 新人风控</span>
+              <span>4.2.1 审核监控</span>
               <span className="text-slate-300">/</span>
-              <span>4.2.2 活动风控</span>
+              <span>4.2.2 新人风控</span>
+              <span className="text-slate-300">/</span>
+              <span>4.2.3 活动风控</span>
             </div>
           }
         />
 
         <div className="mt-2 rounded-xl bg-slate-50/60 p-4 border border-slate-200/50 mb-4 space-y-4">
-          <p className="text-base text-slate-600 font-medium leading-relaxed">
-            {highlightNumbers(
-              "在[[SJB前]]，提前针对[[赛间低门槛、高额度]]的活动一定会带来[[大量新客套利者]]，进行[[全员风控宣导培训]]，强化[[跨站关联、批量注册、高红利低流水、红利后藏分]]等典型行为实施[[系统拦截与人工复合]]的强化；同时，推行平衡[[业务发展]]和[[资损风险]]的[[弹性风控策略]]。",
-            )}
-          </p>
+          <SummaryBox>
+            <p className="text-base text-slate-950 font-bold leading-relaxed">
+              {highlightNumbers(
+                "在[[SJB前]]，提前针对[[赛间低门槛、高额度]]的活动一定会带来[[大量新客套利者]]，进行[[全员风控宣导培训]]，强化[[跨站关联、批量注册、高红利低流水、红利后藏分]]等典型行为实施[[系统拦截与人工复合]]的强化；同时，推行平衡[[业务发展]]和[[资损风险]]的[[弹性风控策略]]。",
+              )}
+            </p>
+          </SummaryBox>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
               {
@@ -969,40 +980,29 @@ export const WorldCupGuaranteeReview: React.FC = () => {
           </div>
         </div>
 
-        {/* 核心拦截指标数据 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <MetricTile
-            label="总拦截金额"
-            value={`+${totalInterceptAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
-            tone="accent"
-          />
-          <MetricTile
-            label="新客拦截金额"
-            value={`+${totalNewUserAdjustAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
-          />
-          <MetricTile
-            label="红利拦截金额"
-            value={`+${totalActivityInterceptAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
-          />
-        </div>
-
         <div className="space-y-4">
+          <AuditVolumeStats 
+            totalInterceptAmount={totalInterceptAmount}
+            totalNewUserAdjustAmount={totalNewUserAdjustAmount}
+            totalActivityInterceptAmount={totalActivityInterceptAmount}
+          />
           <SiteNewUserRiskControlStats />
 
-          {/* 4.2.2 活动风控 */}
-          <div className="mt-3 rounded-xl border border-slate-200 p-4 space-y-4 bg-slate-50/20">
-            <div className="mb-3">
-              <div className="flex items-center justify-between gap-2">
-                <h4 className="text-lg font-black text-slate-950 tracking-tight">
-                  4.2.2 活动风控率
+          {/* 4.2.3 活动风控 */}
+          <div className="mt-6 rounded-2xl border border-slate-200/90 p-5 md:p-6 space-y-6 bg-white">
+            <div className="mb-4">
+              <div className="flex items-center justify-between gap-4">
+                <h4 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-3">
+                  <div className="w-1.5 h-6 bg-blue-600 rounded-full shrink-0" />
+                  <span>4.2.3 活动风控率</span>
                 </h4>
-                <span className="text-sm text-slate-950 font-black bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                <span className="text-xs text-slate-950 font-black bg-slate-100/80 px-3 py-1 rounded-full border border-slate-200">
                   风控率 = 拦截人数 / 总人数
                 </span>
               </div>
-              <SummaryBox className="mt-2 mb-0 p-3">
+              <SummaryBox className="mt-4 mb-0 p-4">
                 {highlightNumbers(
-                  "针对[[重点营销活动]]实施专项风控，对玩家进行[[前置上标备注]]，提款进行[[严查]]，使重点活动[[拦截风险率]]稳定在 7.29%，全部营销活动[[整体防控拦截率]]达到 27.90%。",
+                  "针对[[重点营销活动]]实施专项风控，对玩家进行[[前置上标备注]]，提款进行[[严查]]，使重点活动[[风控率]]在 [[blue:7.29%]]。",
                 )}
               </SummaryBox>
             </div>
@@ -1010,13 +1010,13 @@ export const WorldCupGuaranteeReview: React.FC = () => {
             <div className="bg-white border border-slate-200/60 rounded-xl p-4 md:p-5 shadow-none overflow-hidden space-y-4">
               <div className="flex flex-col gap-3 border-b border-slate-100 pb-3">
                 <div className="flex items-center justify-between gap-4">
-                  <h5 className="text-xl font-black text-slate-950 flex items-center gap-2.5">
+                  <h5 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
                     <span>1. 重点活动风控率</span>
                   </h5>
                 </div>
-                <SummaryBox className="mt-4 mb-0 p-4">
+                <SummaryBox className="mt-2 mb-0 p-4">
                   {highlightNumbers(
-                    "重点活动[[覆盖参与用户]] 107,375 人，[[派发红利规模]] 4,954.00，风控机制精准拦截[[套利异常用户]] 7,830 人，阻断[[异常套利红利]] 345.50，实现 7.29% 的[[活动风控拦截率]]。",
+                    "SJB期间，风控针对性对重点活动进行防控，[[覆盖参与用户]] [[blue:107,375 人]]，[[派发红利规模]] [[blue:4,954.00]]，风控机制精准拦截[[套利异常用户]] [[red:7,830 人]]，阻断[[异常套利红利]] [[green:345.50]]，实现 [[blue:7.29%]] 的[[活动风控拦截率]]。",
                   )}
                 </SummaryBox>
               </div>

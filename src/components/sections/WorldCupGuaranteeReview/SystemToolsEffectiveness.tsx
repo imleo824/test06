@@ -30,7 +30,7 @@ export const SystemToolsEffectiveness = () => {
         </h5>
         <SummaryBox className="mt-2 mb-0 p-3.5">
           {highlightNumbers(
-            "系统工具对[[重点风险特征]]的识别效果显著，其中[[体育对压(跨AB系)]]识别准确率达 90%，[[卡进球点]]达 75%，[[体育打水]]达 68%，[[优势赔率]]达 58%。",
+            "系统工具对[[重点风险特征]]的识别效果显著，其中[[体育对压(跨AB系)]]识别准确率达 [[90%]]，[[卡进球点]]达 [[75%]]，[[体育打水]]达 [[68%]]，[[优势赔率]]达 [[58%]]。",
           )}
         </SummaryBox>
         <div className="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-3">

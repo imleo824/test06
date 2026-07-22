@@ -16,7 +16,7 @@ export const BusinessReviewLogic: React.FC = () => {
           </div>
           <div className="text-xl font-black text-slate-950">
             {highlightNumbers(
-              "保障[[正常用户]]购买[[合理赔率]]以及[[平台合理盈利率]]",
+              "保障[[正常用户]]购买[[合理赔率]]以及[[合理盈利率]]",
             )}
           </div>
         </div>
@@ -35,11 +35,11 @@ export const BusinessReviewLogic: React.FC = () => {
               </div>
               <div>
                 <div className="text-base font-black text-slate-950 mb-1">
-                  B端
+                  B端操盘监控
                 </div>
                 <p className="text-base text-slate-800 font-bold leading-relaxed">
                   {highlightNumbers(
-                    "目标是[[赔率的合理性]]，保障[[正常用户]]购买[[合理赔率]]以及[[平台合理盈利率]]",
+                    "目标是[[赔率的合理性]]，保障[[正常用户]]购买[[合理赔率]]以及[[合理盈利率]]",
                   )}
                 </p>
               </div>
@@ -53,7 +53,7 @@ export const BusinessReviewLogic: React.FC = () => {
               </div>
               <div>
                 <div className="text-base font-black text-slate-950 mb-1">
-                  C端
+                  C端兜底拦截
                 </div>
                 <p className="text-base text-slate-800 font-bold leading-relaxed">
                   {highlightNumbers(

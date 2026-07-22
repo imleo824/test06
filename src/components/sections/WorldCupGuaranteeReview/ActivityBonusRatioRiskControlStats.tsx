@@ -273,13 +273,13 @@ export const ActivityBonusRatioRiskControlStats = () => {
     <div className="bg-white border border-slate-200/60 rounded-xl p-4 md:p-5 shadow-none overflow-hidden space-y-4">
       <div className="flex flex-col gap-3 border-b border-slate-100 pb-3">
         <div className="flex items-center justify-between gap-4">
-          <h5 className="text-xl font-black text-slate-950 flex items-center gap-2.5">
+          <h5 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
             <span>2. 全部活动风控率</span>
           </h5>
         </div>
-        <SummaryBox className="mt-4 mb-0 p-4">
+        <SummaryBox className="mt-2 mb-0 p-4">
           {highlightNumbers(
-            "数据分析显示[[全站活动风控]]整体保持稳健，平均[[风控拦截率]]为 7.86%。其中[[低红利占比]]（0-3%）与[[无存款]]人群的[[拦截率]]相对较高（约 9-11%），有效防范了[[低门槛套利]]风险。",
+            "SJB期间所有领过红利的用户，按照不同的红利/存款比例进行风控分析，整体保持稳健，平均[[风控拦截率]]为 [[7.86%]]。其中[[低红利占比]]（0-3%）与[[无存款]]人群的[[拦截率]]相对较高（约 [[9-11%]]），有效防范了[[低门槛套利]]风险。",
           )}
         </SummaryBox>
       </div>
@@ -292,7 +292,7 @@ export const ActivityBonusRatioRiskControlStats = () => {
                 rowSpan={2}
                 className="py-3 px-4 text-left border-r border-slate-300/80 text-slate-950 font-black whitespace-nowrap"
               >
-                红利比例
+                红利/存款
               </th>
               <th
                 rowSpan={2}
@@ -373,6 +373,7 @@ export const ActivityBonusRatioRiskControlStats = () => {
                 <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">
                   {item.totalDeposit.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
                   })}
                 </td>
                 <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">
@@ -382,6 +383,7 @@ export const ActivityBonusRatioRiskControlStats = () => {
                   <SignColoredValue
                     value={item.totalProfit.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
                     })}
                     className="font-mono font-bold"
                   />
@@ -393,6 +395,7 @@ export const ActivityBonusRatioRiskControlStats = () => {
                   <SignColoredValue
                     value={item.totalLoss.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
                     })}
                     className="font-mono font-bold"
                   />
@@ -401,6 +404,7 @@ export const ActivityBonusRatioRiskControlStats = () => {
                   <SignColoredValue
                     value={item.memberWinLoss.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
                     })}
                     className="font-mono font-bold"
                   />
@@ -408,11 +412,13 @@ export const ActivityBonusRatioRiskControlStats = () => {
                 <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">
                   {item.totalBonus.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
                   })}
                 </td>
                 <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold border-r border-slate-100">
                   {item.totalRebate.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
                   })}
                 </td>
                 <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">

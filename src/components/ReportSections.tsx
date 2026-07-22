@@ -7,9 +7,10 @@ export const SubsectionTitle: React.FC<{
   rightContent?: React.ReactNode;
 }> = ({ title, icon, rightContent }) => {
   return (
-    <div className="mb-4 mt-6 border-b border-slate-200 pb-2.5 flex items-baseline justify-between">
+    <div className="mb-5 mt-8 border-b border-slate-200/90 pb-3 flex items-baseline justify-between">
       <div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-1.5 h-6 bg-blue-600 rounded-full shrink-0" />
           {icon && <span className="text-slate-950">{icon}</span>}
           <h3 className="text-xl md:text-2xl font-black tracking-tight text-slate-950">
             {title}
@@ -17,7 +18,7 @@ export const SubsectionTitle: React.FC<{
         </div>
       </div>
       {rightContent && (
-        <div className="hidden md:flex gap-4 text-sm font-black text-slate-900 whitespace-nowrap flex-nowrap items-baseline">
+        <div className="hidden md:flex gap-4 text-sm font-bold text-slate-800 whitespace-nowrap flex-nowrap items-baseline">
           {rightContent}
         </div>
       )}
@@ -31,7 +32,7 @@ export const Card: React.FC<{
   title?: string;
   className?: string;
   padding?: "none" | "xs" | "sm" | "md" | "lg";
-  tone?: "default" | "soft" | "dark";
+  tone?: "default" | "soft" | "dark" | "flat";
   id?: string;
   headerRight?: React.ReactNode;
 }> = ({
@@ -52,23 +53,23 @@ export const Card: React.FC<{
   }[padding];
 
   const tStyle = {
-    default: "bg-white border border-slate-200/60 shadow-none",
-    soft: "bg-slate-50/50 border border-slate-200/60",
-    dark: "bg-slate-50/80 border border-slate-200/60 shadow-none text-slate-950",
+    default: "bg-white border border-slate-200/90 shadow-sm",
+    soft: "bg-slate-50/70 border border-slate-200/90 shadow-none",
+    dark: "bg-slate-900 border border-slate-800 text-white shadow-sm",
     flat: "bg-white border-0 shadow-none",
   }[tone];
 
   return (
     <div id={id} className={`rounded-2xl ${pStyle} ${tStyle} ${className}`}>
       {title && (
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-2 border-b border-slate-100">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-4 pb-3 border-b border-slate-100">
           <h4
-            className={`text-base font-black tracking-tight ${tone === "dark" ? "text-slate-950" : "text-slate-900"}`}
+            className={`text-base font-black tracking-tight ${tone === "dark" ? "text-white" : "text-slate-950"}`}
           >
             {title}
           </h4>
           {headerRight && (
-            <div className="flex items-center gap-4 text-sm font-black text-slate-900">
+            <div className="flex items-center gap-4 text-sm font-bold text-slate-800">
               {headerRight}
             </div>
           )}

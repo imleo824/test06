@@ -23,18 +23,19 @@ export const SiteNewUserRiskControlStats = () => {
   const overallRate = ((totalBanned + totalAdjust + totalBoth) / totalAccounts * 100);
 
   return (
-    <div className="mt-6 rounded-xl border border-slate-200/60 bg-white p-4 md:p-6 space-y-6">
+    <div className="mt-6 rounded-2xl border border-slate-200/90 bg-white p-5 md:p-6 space-y-6">
       <div className="mb-6">
         <div className="flex items-center justify-between gap-4">
-          <h4 className="text-2xl font-black text-slate-950 tracking-tight">
-            4.2.1 新人风控率
+          <h4 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-3">
+            <div className="w-1.5 h-6 bg-blue-600 rounded-full shrink-0" />
+            <span>4.2.2 新人风控率</span>
           </h4>
-          <span className="text-sm text-slate-600 font-bold bg-slate-100/80 px-3 py-1 rounded border border-slate-200/60">
+          <span className="text-xs text-slate-950 font-black bg-slate-100/80 px-3 py-1 rounded-full border border-slate-200">
             风控率 = 拦截人数 / 总人数
           </span>
         </div>
         <SummaryBox className="mt-4 mb-0 p-4">
-          {highlightNumbers(`新人风控体系共计覆盖 ${totalAccounts.toLocaleString()} 人，发现[[高风险异常账号]] ${(totalBanned + totalAdjust + totalBoth).toLocaleString()} 人，[[拦截金额]]达 ${totalAdjustAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}，整体实现 ${overallRate.toFixed(2)}% 的[[新人风控拦截率]]。`)}
+          {highlightNumbers(`SJB期间注册的用户且有发起提款的数量 [[${totalAccounts.toLocaleString()} 人]]，发现[[高风险异常账号]] [[${(totalBanned + totalAdjust + totalBoth).toLocaleString()} 人]]，[[拦截金额]]达 [[green:${totalAdjustAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]，整体实现 [[${overallRate.toFixed(2)}%]] 的[[新人风控拦截率]]。`)}
         </SummaryBox>
       </div>
  
@@ -71,23 +72,23 @@ export const SiteNewUserRiskControlStats = () => {
  {item.site}
  </td>
  <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{item.accounts.toLocaleString()}</td>
- <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{item.totalDeposit.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+ <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{item.totalDeposit.toLocaleString()}</td>
  <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{item.profitCount.toLocaleString()}</td>
  <td className="py-3 px-3 text-right font-mono tabular-nums">
- <SignColoredValue value={item.totalProfit.toLocaleString(undefined, { minimumFractionDigits: 2 })} className="font-mono font-bold" />
+ <SignColoredValue value={item.totalProfit.toLocaleString()} className="font-mono font-bold" />
  </td>
  <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{item.lossCount.toLocaleString()}</td>
  <td className="py-3 px-3 text-right font-mono tabular-nums">
- <SignColoredValue value={item.totalLoss.toLocaleString(undefined, { minimumFractionDigits: 2 })} className="font-mono font-bold" />
+ <SignColoredValue value={item.totalLoss.toLocaleString()} className="font-mono font-bold" />
  </td>
  <td className="py-3 px-3 text-right font-mono tabular-nums border-r border-slate-100 bg-blue-50/30">
- <SignColoredValue value={item.memberWinLoss.toLocaleString(undefined, { minimumFractionDigits: 2 })} className="font-mono font-bold" />
+ <SignColoredValue value={item.memberWinLoss.toLocaleString()} className="font-mono font-bold" />
  </td>
- <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{item.totalBonus.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
- <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold border-r border-slate-100">{item.totalRebate.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+ <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{item.totalBonus.toLocaleString()}</td>
+ <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold border-r border-slate-100">{item.totalRebate.toLocaleString()}</td>
  <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">{(item.banned + item.adjust + item.both).toLocaleString()}</td>
  <td className="py-3 px-3 text-right font-mono tabular-nums bg-blue-50/30">
- <SignColoredValue value={item.adjustAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })} className="font-mono font-bold" />
+ <SignColoredValue value={item.adjustAmount.toLocaleString()} className="font-mono font-bold" />
  </td>
  <td className="py-3 px-4 bg-slate-50/50 border-l border-slate-100">
  <div className="flex items-center justify-end gap-3">
@@ -107,23 +108,23 @@ export const SiteNewUserRiskControlStats = () => {
  <tr className="border-t border-slate-200 bg-blue-50/70 font-black text-slate-950">
  <td className="py-3.5 px-4 uppercase tracking-wider border-r border-slate-200 font-black">汇总</td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{totalAccounts.toLocaleString()}</td>
- <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{totalDepositAmountSummary.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+ <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{totalDepositAmountSummary.toLocaleString()}</td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{totalProfitCount.toLocaleString()}</td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums">
- <SignColoredValue value={totalProfitAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })} className="font-mono font-black" />
+ <SignColoredValue value={totalProfitAmount.toLocaleString()} className="font-mono font-black" />
  </td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{totalLossCount.toLocaleString()}</td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums">
- <SignColoredValue value={totalLossAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })} className="font-mono font-black" />
+ <SignColoredValue value={totalLossAmount.toLocaleString()} className="font-mono font-black" />
  </td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums border-r border-slate-200">
- <SignColoredValue value={totalMemberWinLoss.toLocaleString(undefined, { minimumFractionDigits: 2 })} className="font-mono font-black" />
+ <SignColoredValue value={totalMemberWinLoss.toLocaleString()} className="font-mono font-black" />
  </td>
- <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{totalBonusAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
- <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black border-r border-slate-200">{totalRebateAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+ <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{totalBonusAmount.toLocaleString()}</td>
+ <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black border-r border-slate-200">{totalRebateAmount.toLocaleString()}</td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black">{(totalBanned + totalAdjust + totalBoth).toLocaleString()}</td>
  <td className="py-3.5 px-3 text-right font-mono tabular-nums">
- <span className="font-mono font-black text-blue-600">{totalAdjustAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+ <span className="font-mono font-black text-blue-600">{totalAdjustAmount.toLocaleString()}</span>
  </td>
  <td className="py-3.5 px-4 border-l border-slate-200">
  <div className="flex items-center justify-end gap-3">
@@ -137,13 +138,13 @@ export const SiteNewUserRiskControlStats = () => {
  />
  </div>
  </div>
- </td>
- </tr>
- </tbody>
- </table>
- </div>
- </div>
- </div>
- );
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default SiteNewUserRiskControlStats;

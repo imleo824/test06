@@ -8,7 +8,7 @@ import {
   Info,
 } from "lucide-react";
 
-import { highlightNumbers } from "./utils";
+import { highlightNumbers, SummaryBox } from "./utils";
 
 interface SubMarketItem {
   name: string;
@@ -534,46 +534,46 @@ export const TradingMonitorTable: React.FC = () => {
       </div>
 
       {/* Explanation Footnote appropriate for projection / static reporting */}
-      <div className="mb-6 rounded-xl border border-slate-200/50 bg-slate-50/60 p-4 md:p-5">
-        <div className="space-y-3 text-slate-700">
+      <div className="mb-6">
+        <SummaryBox className="mb-6">
           <p className="text-base text-slate-950 font-bold leading-relaxed">
             {highlightNumbers(
               "系统将通过【外部】[[百家赔监控]]外部赔率偏离异常，结合【内部】[[操盘数据监控]]自身赔率抽水合理，后续将推进以下两个关键点：",
             )}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-            <div className="rounded-lg border border-slate-200 bg-white p-4 space-y-2">
-              <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
-                <div className="flex items-center gap-1.5 text-slate-950 font-black text-base">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600" />
-                  <span>1、百家赔数据源（监控外部赔率异常）</span>
-                </div>
-                <div className="text-sm font-black text-emerald-900 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  进度：90%
-                </div>
+        </SummaryBox>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-xl border border-slate-200 bg-slate-50/50 p-4 space-y-2">
+            <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
+              <div className="flex items-center gap-1.5 text-slate-950 font-black text-base">
+                <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                <span>关键方向一：百家赔数据源（监控外部赔率异常）</span>
               </div>
-              <p className="text-base text-slate-950 font-bold leading-relaxed">
-                {highlightNumbers(
-                  "目前缺少[[平博]]，需要继续推动B端尽快引入。通过引入更完整的[[百家赔数据]]，实现自身盘口赔率与外部市场主流赔率的[[异常偏离监控]]，保障[[外部定价对齐]]。",
-                )}
-              </p>
-            </div>
-            <div className="rounded-lg border border-slate-200 bg-white p-4 space-y-2">
-              <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
-                <div className="flex items-center gap-1.5 text-slate-950 font-black text-base">
-                  <span className="w-2 h-2 rounded-full bg-blue-600 " />
-                  <span>2、操盘数据监控（监控内部赔率异常）</span>
-                </div>
-                <div className="text-sm font-black text-blue-900 bg-blue-100 px-2 py-0.5 rounded-full">
-                  进度：45%
-                </div>
+              <div className="text-sm font-black text-emerald-900 bg-emerald-100 px-2 py-0.5 rounded-full">
+                进度：90%
               </div>
-              <p className="text-base text-slate-950 font-bold leading-relaxed">
-                {highlightNumbers(
-                  "目前内部的[[赔率联动]]覆盖已达 90%，但仍缺乏核心的[[赛事操盘过程数据]]。后续将重点推进全部比赛的玩法、盘口赔率与投注数据的[[自动对接]]，以实现对自身盘口合理性的即时监控。",
-                )}
-              </p>
             </div>
+            <p className="text-base text-slate-950 font-bold leading-relaxed">
+              {highlightNumbers(
+                "目前缺少[[blue:平博]]，需要继续推动B端尽快引入。通过引入更完整的[[百家赔数据]]，实现自身盘口赔率与外部市场主流赔率的[[red:异常偏离监控]]，保障[[外部定价对齐]]，[[green:降低被打水机率]]。",
+              )}
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-slate-50/50 p-4 space-y-2">
+            <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
+              <div className="flex items-center gap-1.5 text-slate-950 font-black text-base">
+                <span className="w-2 h-2 rounded-full bg-blue-600 " />
+                <span>关键方向二：操盘数据监控（监控内部赔率异常）</span>
+              </div>
+              <div className="text-sm font-black text-blue-900 bg-blue-100 px-2 py-0.5 rounded-full">
+                进度：45%
+              </div>
+            </div>
+            <p className="text-base text-slate-950 font-bold leading-relaxed">
+              {highlightNumbers(
+                "目前内部的[[赔率联动]]覆盖进球类玩法 [[blue:90%]]，但仍缺乏核心的[[赛事操盘过程数据]]。后续将重点推进全部比赛的玩法、盘口赔率与投注数据的[[blue:自动对接]]，以实现对自身盘口合理性的[[green:即时监控]]。",
+              )}
+            </p>
           </div>
         </div>
       </div>
@@ -609,9 +609,7 @@ export const TradingMonitorTable: React.FC = () => {
           </thead>
           <tbody className="divide-y divide-slate-100/70">
             {filteredData.map((group) => {
-              const groupMarketOdds = parseFloat(
-                (group.avgOdds + 0.02).toFixed(2),
-              );
+              const groupMarketOdds = Number((group.avgOdds + 0.02).toFixed(2));
               return (
                 <React.Fragment key={group.category}>
                   {/* Parent Row (Pivot Table Group Header) */}
@@ -643,19 +641,15 @@ export const TradingMonitorTable: React.FC = () => {
                       .slice(0, group.category === "全场大小" ? 3 : 1)
                       .map((item, itemIdx) => {
                         // Dynamically mock market odds with slight deviation
-                        let marketOdds = item.avgOdds;
+                          let marketOdds = item.avgOdds;
                         if (item.isAnomaly) {
-                          marketOdds = parseFloat(
-                            (item.avgOdds + 0.15).toFixed(2),
-                          );
+                          marketOdds = Number((item.avgOdds + 0.15).toFixed(2));
                         } else {
                           const hash = (item.name || "")
                             .split("")
                             .reduce((acc, char) => acc + char.charCodeAt(0), 0);
                           const diff = ((hash % 5) - 2) * 0.02; // -0.04 to +0.04
-                          marketOdds = parseFloat(
-                            Math.max(0.1, item.avgOdds + diff).toFixed(2),
-                          );
+                          marketOdds = Number(Math.max(0.1, item.avgOdds + diff).toFixed(2));
                         }
 
                         return (
@@ -689,7 +683,7 @@ export const TradingMonitorTable: React.FC = () => {
                                   : "text-slate-950 font-bold"
                               }`}
                             >
-                              {item.avgOdds.toFixed(2)}
+                              {item.avgOdds}
                             </td>
                             <td
                               className={`py-3 px-4 text-right font-mono tabular-nums border-l border-indigo-100 bg-indigo-50/20 ${
@@ -698,7 +692,7 @@ export const TradingMonitorTable: React.FC = () => {
                                   : "text-slate-950 font-bold"
                               }`}
                             >
-                              {marketOdds.toFixed(2)}
+                              {marketOdds}
                             </td>
                           </tr>
                         );
