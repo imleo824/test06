@@ -3,7 +3,7 @@ import React from "react";
 // 辅助函数：统一高亮数字样式（纯静态，不带任何动效）
 export function highlightNumbers(
   text: string,
-  colorClass: string = "text-blue-600 font-black",
+  colorClass: string = "text-blue-600 font-bold",
 ) {
   const pattern =
     /(\[\[(.*?)\]\])|([+\-]?\d+(?:[.,]\d+)*(?:\s*(?:%|人|场|项|倍|E|元|h|ms|min|k|个))?)/g;
@@ -26,7 +26,7 @@ export function highlightNumbers(
         result.push(
           <span
             key={match.index}
-            className="text-emerald-700 font-black font-mono mx-0.5"
+            className="text-emerald-700 font-bold font-mono mx-0.5"
           >
             {phrase.substring(6)}
           </span>,
@@ -36,7 +36,7 @@ export function highlightNumbers(
       }
       if (phrase.startsWith("red:")) {
         result.push(
-          <span key={match.index} className="text-rose-700 font-black font-mono mx-0.5">
+          <span key={match.index} className="text-rose-700 font-bold font-mono mx-0.5">
             {phrase.substring(4)}
           </span>,
         );
@@ -45,7 +45,7 @@ export function highlightNumbers(
       }
       if (phrase.startsWith("blue:")) {
         result.push(
-          <span key={match.index} className="text-blue-700 font-black font-mono mx-0.5">
+          <span key={match.index} className="text-blue-700 font-bold font-mono mx-0.5">
             {phrase.substring(5)}
           </span>,
         );
@@ -54,7 +54,7 @@ export function highlightNumbers(
       }
       if (phrase.startsWith("amber:")) {
         result.push(
-          <span key={match.index} className="text-amber-700 font-black font-mono mx-0.5">
+          <span key={match.index} className="text-amber-700 font-bold font-mono mx-0.5">
             {phrase.substring(6)}
           </span>,
         );
@@ -72,7 +72,7 @@ export function highlightNumbers(
         (phrase.startsWith("-") || parseFloat(numericValue) < 0)
       ) {
         result.push(
-          <span key={match.index} className="text-rose-700 font-black font-mono mx-0.5">
+          <span key={match.index} className="text-rose-700 font-bold font-mono mx-0.5">
             {phrase}
           </span>,
         );
@@ -83,7 +83,7 @@ export function highlightNumbers(
         result.push(
           <span
             key={match.index}
-            className="text-emerald-700 font-black font-mono mx-0.5"
+            className="text-emerald-700 font-bold font-mono mx-0.5"
           >
             {phrase.substring(1)}
           </span>,
@@ -103,7 +103,7 @@ export function highlightNumbers(
             key={match.index}
             className="relative inline-block mx-0.5 group"
           >
-            <span className="text-slate-950 font-black relative z-10">
+            <span className="text-slate-950 font-bold relative z-10">
               {phrase}
             </span>
             <span className="absolute bottom-0.5 left-0 w-full h-[2px] bg-blue-500/25 z-0"></span>
@@ -117,7 +117,7 @@ export function highlightNumbers(
         result.push(
           <strong
             key={match.index}
-            className="font-mono tracking-tight mx-0.5 text-emerald-700 font-black"
+            className="font-mono tracking-tight mx-0.5 text-emerald-700 font-bold"
           >
             {part.substring(1)}
           </strong>,
@@ -126,7 +126,7 @@ export function highlightNumbers(
         result.push(
           <strong
             key={match.index}
-            className="font-mono tracking-tight mx-0.5 text-rose-700 font-black"
+            className="font-mono tracking-tight mx-0.5 text-rose-700 font-bold"
           >
             {part}
           </strong>,
@@ -222,7 +222,7 @@ export const SummaryBox = ({
     >
       {title && (
         <div
-          className={`flex items-center gap-2 mb-2 ${style.title} font-black text-xs uppercase tracking-widest`}
+          className={`flex items-center gap-2 mb-2 ${style.title} font-bold text-xs uppercase tracking-widest`}
         >
           {icon && <span>{icon}</span>}
           <span>{title}</span>
@@ -244,7 +244,7 @@ export const SummaryBox = ({
 
 export const SignColoredValue = ({
   value,
-  className = "font-mono font-black tabular-nums",
+  className = "font-mono font-bold tabular-nums",
 }: {
   value: string | number;
   className?: string;
@@ -269,7 +269,7 @@ export const SignColoredValue = ({
 export const UnitNumber = ({
   value,
   unit,
-  className = "text-3xl",
+  className = "text-3xl font-bold",
   unitClassName = "text-lg",
 }: {
   value: string;
@@ -295,7 +295,7 @@ export const MetricTile = ({
   value,
   unit,
   detail,
-  valueClassName = "text-3xl sm:text-4xl font-mono font-black tabular-nums",
+  valueClassName = "text-3xl sm:text-4xl font-mono font-bold tabular-nums",
   tone = "default",
 }: {
   label: string;
@@ -308,7 +308,7 @@ export const MetricTile = ({
   const showUnit = unit && !["E", "万", "亿", "万元", "亿元"].includes(unit);
   return (
     <div className="rounded-2xl bg-white p-6 border border-slate-200/90 shadow-sm">
-      <div className="mb-3 text-sm font-black uppercase tracking-wider text-slate-800">
+      <div className="mb-3 text-sm font-bold uppercase tracking-wider text-slate-800">
         {label}
         {showUnit ? ` (${unit})` : ""}
       </div>

@@ -64,36 +64,33 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
 
       {/* 拦截汇总指标 (Moved to top as primary indicators) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="bg-slate-50/70 border border-slate-200 rounded-2xl p-5 shadow-xs relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-1.5 h-full bg-rose-600" />
-          <div className="flex flex-col h-full pl-1">
-            <span className="text-xs font-black text-slate-950 uppercase tracking-wide mb-1.5">总拦截金额 (SJB)</span>
+        <div className="bg-rose-50/20 border border-rose-200/60 rounded-2xl p-5 shadow-xs relative overflow-hidden">
+          <div className="flex flex-col h-full">
+            <span className="text-xs font-bold text-slate-800 uppercase tracking-wide mb-1.5">总拦截金额 (SJB)</span>
             <div className="flex items-baseline gap-1.5">
-              <span className="text-3xl font-black text-slate-950 tabular-nums tracking-tight">
+              <span className="text-3xl font-bold text-rose-700 font-mono tabular-nums tracking-tight">
                 {totalInterceptAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50/70 border border-slate-200 rounded-2xl p-5 shadow-xs relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-1.5 h-full bg-rose-500" />
-          <div className="flex flex-col h-full pl-1">
-            <span className="text-xs font-black text-slate-950 uppercase tracking-wide mb-1.5">新客拦截金额</span>
+        <div className="bg-rose-50/20 border border-rose-200/60 rounded-2xl p-5 shadow-xs relative overflow-hidden">
+          <div className="flex flex-col h-full">
+            <span className="text-xs font-bold text-slate-800 uppercase tracking-wide mb-1.5">新客拦截金额</span>
             <div className="flex items-baseline gap-1.5">
-              <span className="text-3xl font-black text-slate-950 tabular-nums tracking-tight">
+              <span className="text-3xl font-bold text-rose-700 font-mono tabular-nums tracking-tight">
                 {totalNewUserAdjustAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
           </div>
         </div>
 
-        <div className="bg-slate-50/70 border border-slate-200 rounded-2xl p-5 shadow-xs relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-1.5 h-full bg-rose-500" />
-          <div className="flex flex-col h-full pl-1">
-            <span className="text-xs font-black text-slate-950 uppercase tracking-wide mb-1.5">体育拦截金额</span>
+        <div className="bg-rose-50/20 border border-rose-200/60 rounded-2xl p-5 shadow-xs relative overflow-hidden">
+          <div className="flex flex-col h-full">
+            <span className="text-xs font-bold text-slate-800 uppercase tracking-wide mb-1.5">体育拦截金额</span>
             <div className="flex items-baseline gap-1.5">
-              <span className="text-3xl font-black text-slate-950 tabular-nums tracking-tight">
+              <span className="text-3xl font-bold text-rose-700 font-mono tabular-nums tracking-tight">
                 {totalActivityInterceptAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
