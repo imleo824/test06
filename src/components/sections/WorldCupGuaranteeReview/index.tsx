@@ -37,9 +37,8 @@ export const WorldCupGuaranteeReview: React.FC = () => {
     (sum, item) => sum + item.adjustAmount,
     0,
   );
-  const totalActivityInterceptAmount = 345.5; // Constant sum of key activity tables
-  const totalInterceptAmount =
-    totalNewUserAdjustAmount + totalActivityInterceptAmount;
+  const totalActivityInterceptAmount = 7427.77; // Sum of sports interception types (5136.22 + 1359.90 + 637.60 + 264.93 + 28.62 + 0.50 + 0.00)
+  const totalInterceptAmount = 12579.89;
 
   const renderCEndColumnKeyActions = (step: any) => {
     if (step.isSystemWarning) {
@@ -122,11 +121,11 @@ export const WorldCupGuaranteeReview: React.FC = () => {
 
               <div className="flex flex-col gap-2 w-1/2 pt-4 px-2 items-center">
                 <div className="rounded bg-emerald-100 px-3 py-1.5 text-sm font-black text-emerald-900 text-center w-full z-10 relative">
-                  体育订单
+                  TY订单
                 </div>
                 <div className="text-slate-800 text-sm font-bold">↓</div>
                 <div className="rounded border-2 border-emerald-200 bg-white px-2 py-1.5 text-sm font-black text-slate-950 text-center w-full shadow-none z-10 relative">
-                  体育组（34人）
+                  TY组（34人）
                 </div>
               </div>
 
@@ -142,7 +141,7 @@ export const WorldCupGuaranteeReview: React.FC = () => {
             </div>
 
             <div className="mt-5 text-sm text-slate-950 font-bold text-center bg-slate-100/80 px-4 py-2 rounded-lg border border-slate-200 w-full max-w-[260px]">
-              注：系统分单还有很多其他逻辑，这里是说明跟体育相关
+              注：系统分单还有很多其他逻辑，这里是说明跟TY相关
             </div>
           </div>
         </div>
@@ -323,7 +322,7 @@ export const WorldCupGuaranteeReview: React.FC = () => {
                 </tr>
                 <tr className="odd:bg-white even:bg-slate-50/40">
                   <td className="p-4 text-slate-950 font-bold">
-                    过盘率
+                    过盘率（早盘）
                   </td>
                   <td className="p-4 font-mono tabular-nums font-black text-rose-700 text-right bg-rose-50/40">
                     50.76%
@@ -492,7 +491,7 @@ export const WorldCupGuaranteeReview: React.FC = () => {
       <SummaryBox>
         <p className="text-base text-slate-950 font-bold leading-relaxed">
           {highlightNumbers(
-            "在[[SJB前半年]]，即开始[[推进体育风控体系升级]]，强化[[BC端联动]]，在[[业务流程、控制策略与系统数据]]等方面进行[[深度协同]]；对标行业最佳实践，从[[B端操盘源头]]与[[C端体育风控]] 2 个维度进行闭环调优。经过本次赛事检验，阶段性成果[[符合预期]]，为后续[[持续系统迭代]]奠定了信心基础。",
+            "在[[SJB前半年]]，即开始[[推进TY风控体系升级]]，强化[[BC端联动]]，在[[业务流程、控制策略与系统数据]]等方面进行[[深度协同]]；对标行业最佳实践，从[[B端操盘源头]]与[[C端TY风控]] 2 个维度进行闭环调优。经过本次赛事检验，阶段性成果[[符合预期]]，为后续[[持续系统迭代]]奠定了信心基础。",
           )}
         </p>
       </SummaryBox>
@@ -505,7 +504,7 @@ export const WorldCupGuaranteeReview: React.FC = () => {
           <div className="flex items-center gap-3 text-sm font-black text-slate-950">
             <span>4.1.1 B端操盘监控</span>
             <span className="text-slate-300">/</span>
-            <span>4.1.2 C端体育拦截</span>
+            <span>4.1.2 C端TY拦截</span>
           </div>
         }
       />
@@ -817,14 +816,14 @@ export const WorldCupGuaranteeReview: React.FC = () => {
 
         <TradingMonitorTable />
 
-      {/* C端体育拦截 Section */}
+      {/* C端TY拦截 Section */}
       <div className="space-y-6 mb-12">
-        <CoreActionHeader index="4.1.2" title="C端体育拦截" />
+        <CoreActionHeader index="4.1.2" title="C端TY拦截" />
 
         <SummaryBox>
           <p className="text-base text-slate-950 font-bold leading-relaxed">
             {highlightNumbers(
-              `SJB期间，全面实施[[系统预警、系统初审、系统分单与人工复审]]的标准化流程，累计拦截体育高危订单金额达 [[green:17,070.07]]，确保高风险订单[[有效拦截]]。`,
+              `SJB期间，全面实施[[系统预警、系统初审、系统分单与人工复审]]的标准化流程，累计拦截TY高危订单金额达 [[green:7,427.77]]，确保高风险订单[[有效拦截]]。`,
             )}
           </p>
         </SummaryBox>
@@ -876,17 +875,17 @@ export const WorldCupGuaranteeReview: React.FC = () => {
                     className="h-4.5 w-4.5 text-slate-950"
                     strokeWidth={2}
                   />
-                  <span>体育拦截类型</span>
+                  <span>TY拦截类型</span>
                 </h5>
                 <SummaryBox className="mt-2 mb-0 p-3">
                   {highlightNumbers(
-                    "异常注单拦截以[[体育打水]]（[[blue:81.24%]]）与[[批量打水套利]]（[[blue:8.01%]]）为主，合计覆盖超过 [[blue:89.25%]] 的[[重点拦截流水]]。",
+                    "异常注单拦截以[[TY打水]]（[[blue:69.15%]]）与[[出货]]（[[blue:18.31%]]）、[[批量打水]]（[[blue:8.58%]]）为主，累计拦截金额达 [[green:7,427.77]]",
                   )}
                 </SummaryBox>
                 <div className="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-3">
                   <div className="space-y-1">
                     <div className="text-sm font-black text-slate-900 uppercase tracking-wider">
-                      原来体育审核
+                      原来TY审核
                     </div>
                     <div className="text-lg font-black text-slate-950">
                       专业知识缺欠
@@ -894,7 +893,7 @@ export const WorldCupGuaranteeReview: React.FC = () => {
                   </div>
                   <div className="space-y-1">
                     <div className="text-sm font-black text-slate-950 uppercase tracking-wider">
-                      当前体育小组
+                      当前TY小组
                     </div>
                     <div className="flex items-baseline gap-1.5 flex-wrap">
                       <span className="text-lg font-black text-slate-950">
@@ -1002,165 +1001,9 @@ export const WorldCupGuaranteeReview: React.FC = () => {
               </div>
               <SummaryBox className="mt-4 mb-0 p-4">
                 {highlightNumbers(
-                  "针对[[重点营销活动]]实施专项风控，对玩家进行[[前置上标备注]]，提款进行[[严查]]，使重点活动[[风控率]]在 [[blue:7.29%]]。",
+                  "针对[[重点营销活动]]实施专项风控，对玩家进行[[前置上标备注]]，提款进行[[严查]]。对SJB期间所有领过红利的用户，按照不同的红利/存款比例进行风控分析，整体保持稳健，平均[[风控拦截率]]为 [[blue:5.09%]]。",
                 )}
               </SummaryBox>
-            </div>
-
-            <div className="bg-white border border-slate-200/60 rounded-xl p-4 md:p-5 shadow-none overflow-hidden space-y-4">
-              <div className="flex flex-col gap-3 border-b border-slate-100 pb-3">
-                <div className="flex items-center justify-between gap-4">
-                  <h5 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
-                    <span>1. 重点活动风控率</span>
-                  </h5>
-                </div>
-                <SummaryBox className="mt-2 mb-0 p-4">
-                  {highlightNumbers(
-                    "SJB期间，风控针对性对重点活动进行防控，[[覆盖参与用户]] [[blue:107,375 人]]，[[派发红利规模]] [[blue:4,954.00]]，风控机制精准拦截[[套利异常用户]] [[red:7,830 人]]，阻断[[异常套利红利]] [[green:345.50]]，实现 [[blue:7.29%]] 的[[活动风控拦截率]]。",
-                  )}
-                </SummaryBox>
-              </div>
-
-              <div className="overflow-x-auto border border-slate-200/60 rounded-xl shadow-none">
-                <table className="w-full text-left text-sm font-bold border-collapse">
-                  <thead>
-                    <tr className="bg-slate-100 border-b-2 border-slate-300 text-slate-950 font-black text-sm uppercase tracking-wider">
-                      <th className="py-3.5 px-4 text-left border-r border-slate-300/80 text-slate-950 font-black">
-                        活动名称
-                      </th>
-                      <th className="py-3.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black">
-                        总人数
-                      </th>
-                      <th className="py-3.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black">
-                        红利总额
-                      </th>
-                      <th className="py-3.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black">
-                        总输赢
-                      </th>
-                      <th className="py-3.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black">
-                        拦截人数
-                      </th>
-                      <th className="py-3.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black">
-                        拦截金额
-                      </th>
-                      <th className="py-3.5 px-4 text-right w-48 text-slate-950 font-black border-l border-slate-300/80">
-                        风控率
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {[
-                      {
-                        name: "注册送",
-                        participants: "30,055 人",
-                        released: "296",
-                        winLoss: "-874",
-                        bannedUsers: "2,450 人",
-                        interceptedAmount: "32.40",
-                        anomalyRate: 1.9,
-                      },
-                      {
-                        name: "首存送",
-                        participants: "58,900 人",
-                        released: "3,372",
-                        winLoss: "-23,700",
-                        bannedUsers: "3,820 人",
-                        interceptedAmount: "218.60",
-                        anomalyRate: 2.6,
-                      },
-                      {
-                        name: "投注100%返还",
-                        participants: "18,420 人",
-                        released: "1,286",
-                        winLoss: "-10,800",
-                        bannedUsers: "1,560 人",
-                        interceptedAmount: "94.50",
-                        anomalyRate: 3.1,
-                      },
-                    ].map((activity) => (
-                      <tr key={activity.name} className=" ">
-                        <td className="py-3 px-4 text-slate-950 font-black border-r border-slate-100 bg-slate-50/30">
-                          {activity.name}
-                        </td>
-                        <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">
-                          {activity.participants}
-                        </td>
-                        <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">
-                          {activity.released}
-                        </td>
-                        <td className="py-3 px-3 text-right font-mono tabular-nums bg-blue-50/30">
-                          <SignColoredValue
-                            value={activity.winLoss}
-                            className="font-mono font-bold"
-                          />
-                        </td>
-                        <td className="py-3 px-3 text-right font-mono tabular-nums text-slate-950 font-bold">
-                          {activity.bannedUsers}
-                        </td>
-                        <td className="py-3 px-3 text-right font-mono tabular-nums bg-blue-50/30">
-                          <SignColoredValue
-                            value={activity.interceptedAmount}
-                            className="font-mono font-bold"
-                          />
-                        </td>
-                        <td className="py-3 px-4 bg-slate-50/50 border-l border-slate-100">
-                          <div className="flex items-center justify-end gap-3">
-                            <span className="w-14 text-right font-mono tabular-nums font-black text-sm text-slate-950">
-                              {activity.anomalyRate.toFixed(2)}%
-                            </span>
-                            <div className="flex-1 bg-slate-200/75 rounded-full h-1.5 overflow-hidden max-w-[120px] hidden sm:block">
-                              <div
-                                className="h-full rounded-full bg-slate-900"
-                                style={{
-                                  width: `${Math.min((activity.anomalyRate / 10) * 100, 100)}%`,
-                                }}
-                              />
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                    <tr className="border-t border-slate-200 bg-blue-50/70 font-black text-slate-950">
-                      <td className="py-3.5 px-4 uppercase tracking-wider border-r border-slate-200 font-black">
-                        汇总
-                      </td>
-                      <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black text-slate-950">
-                        107,375 人
-                      </td>
-                      <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black text-slate-950">
-                        4,954
-                      </td>
-                      <td className="py-3.5 px-3 text-right font-mono tabular-nums border-r border-slate-200">
-                        <SignColoredValue
-                          value="-35,374"
-                          className="font-mono font-black"
-                        />
-                      </td>
-                      <td className="py-3.5 px-3 text-right font-mono tabular-nums font-black text-slate-950">
-                        7,830 人
-                      </td>
-                      <td className="py-3.5 px-3 text-right font-mono tabular-nums">
-                        <span className="font-mono font-black text-blue-600">
-                          345.50
-                        </span>
-                      </td>
-                      <td className="py-3.5 px-4 border-l border-slate-200">
-                        <div className="flex items-center justify-end gap-3">
-                          <span className="w-14 text-right font-mono tabular-nums font-black text-sm text-blue-600">
-                            7.29%
-                          </span>
-                          <div className="flex-1 bg-slate-200 rounded-full h-1.5 overflow-hidden max-w-[120px] hidden sm:block border border-slate-300/20">
-                            <div
-                              className="h-full rounded-full bg-blue-600"
-                              style={{ width: "72.9%" }}
-                            />
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </div>
 
             <ActivityBonusRatioRiskControlStats />

@@ -4,225 +4,225 @@ import { highlightNumbers, SignColoredValue, SummaryBox } from "./utils";
 export const ActivityBonusRatioRiskControlStats = () => {
   const rangeData = [
     {
-      range: "无存款",
-      accounts: 176361,
+      range: "有领取无存款",
+      accounts: 348042,
       totalDeposit: 0,
-      profitCount: 36534,
-      totalProfit: 2530.29,
-      lossCount: 139827,
-      totalLoss: -3635.69,
-      memberWinLoss: -1105.4,
-      totalBonus: 6512.8,
-      totalRebate: 520.22,
-      banned: 16072,
+      profitCount: 74922,
+      totalProfit: 5228.61,
+      lossCount: 273120,
+      totalLoss: -8210.15,
+      memberWinLoss: -2981.54,
+      totalBonus: 15807.21,
+      totalRebate: 9846.23,
+      banned: 20066,
       adjust: 0,
       both: 0,
-      adjustAmount: 503.82,
-      rate: 9.11,
+      adjustAmount: 949.91,
+      rate: 5.77,
     },
     {
       range: "0.00% - 3.00%",
-      accounts: 194326,
-      totalDeposit: 368810.24,
-      profitCount: 47777,
-      totalProfit: 23177.34,
-      lossCount: 146549,
-      totalLoss: -80813.7,
-      memberWinLoss: -57636.36,
-      totalBonus: 3588.1,
-      totalRebate: 3354.62,
-      banned: 21155,
+      accounts: 564697,
+      totalDeposit: 3001908.04,
+      profitCount: 117535,
+      totalProfit: 121378.89,
+      lossCount: 447162,
+      totalLoss: -563901.18,
+      memberWinLoss: -442522.28,
+      totalBonus: 47285.73,
+      totalRebate: 151307.63,
+      banned: 30949,
       adjust: 0,
       both: 0,
-      adjustAmount: 2336.77,
-      rate: 10.89,
+      adjustAmount: 6039.42,
+      rate: 5.48,
     },
     {
       range: "3.01% - 6.00%",
-      accounts: 101606,
-      totalDeposit: 507076.77,
-      profitCount: 20645,
-      totalProfit: 24568.14,
-      lossCount: 80961,
-      totalLoss: -109822.28,
-      memberWinLoss: -85254.14,
-      totalBonus: 10813.69,
-      totalRebate: 11488.46,
-      banned: 4526,
+      accounts: 194086,
+      totalDeposit: 1185586.92,
+      profitCount: 35242,
+      totalProfit: 33815.33,
+      lossCount: 158844,
+      totalLoss: -223628.54,
+      memberWinLoss: -189813.2,
+      totalBonus: 44454.23,
+      totalRebate: 59896.04,
+      banned: 5592,
       adjust: 0,
       both: 0,
-      adjustAmount: 1234.76,
-      rate: 4.45,
+      adjustAmount: 1407.54,
+      rate: 2.88,
     },
     {
       range: "6.01% - 10.00%",
-      accounts: 88482,
-      totalDeposit: 349633.67,
-      profitCount: 16149,
-      totalProfit: 18054.05,
-      lossCount: 72333,
-      totalLoss: -94260.6,
-      memberWinLoss: -76206.55,
-      totalBonus: 12307.23,
-      totalRebate: 14695.74,
-      banned: 4373,
+      accounts: 148635,
+      totalDeposit: 565691.84,
+      profitCount: 25267,
+      totalProfit: 18390.43,
+      lossCount: 123368,
+      totalLoss: -108456.43,
+      memberWinLoss: -90066.0,
+      totalBonus: 31553.47,
+      totalRebate: 30135.68,
+      banned: 5614,
       adjust: 0,
       both: 0,
-      adjustAmount: 632.44,
-      rate: 4.94,
+      adjustAmount: 686.03,
+      rate: 3.78,
     },
     {
       range: "10.01% - 20.00%",
-      accounts: 102015,
-      totalDeposit: 226874.57,
-      profitCount: 18575,
-      totalProfit: 13080.4,
-      lossCount: 83440,
-      totalLoss: -83515.13,
-      memberWinLoss: -70434.72,
-      totalBonus: 14711.96,
-      totalRebate: 16293.76,
-      banned: 5959,
+      accounts: 168208,
+      totalDeposit: 455821.26,
+      profitCount: 28794,
+      totalProfit: 13694.99,
+      lossCount: 139414,
+      totalLoss: -85639.7,
+      memberWinLoss: -71944.71,
+      totalBonus: 34982.79,
+      totalRebate: 29853.96,
+      banned: 7883,
       adjust: 0,
       both: 0,
-      adjustAmount: 511.46,
-      rate: 5.84,
+      adjustAmount: 791.12,
+      rate: 4.69,
     },
     {
       range: "20.01% - 30.00%",
-      accounts: 38693,
-      totalDeposit: 50311.02,
-      profitCount: 7694,
-      totalProfit: 4038.28,
-      lossCount: 30999,
-      totalLoss: -23625.71,
-      memberWinLoss: -19587.43,
-      totalBonus: 6047.45,
-      totalRebate: 6023.88,
-      banned: 3322,
+      accounts: 69150,
+      totalDeposit: 136670.71,
+      profitCount: 13158,
+      totalProfit: 4644.02,
+      lossCount: 55992,
+      totalLoss: -22470.65,
+      memberWinLoss: -17826.62,
+      totalBonus: 13804.96,
+      totalRebate: 7229.93,
+      banned: 4588,
       adjust: 0,
       both: 0,
-      adjustAmount: 329.03,
-      rate: 8.59,
+      adjustAmount: 260.91,
+      rate: 6.63,
     },
     {
       range: "30.01% - 40.00%",
-      accounts: 22333,
-      totalDeposit: 23564.69,
-      profitCount: 4688,
-      totalProfit: 2232.33,
-      lossCount: 17645,
-      totalLoss: -10707.13,
-      memberWinLoss: -8474.8,
-      totalBonus: 3417.94,
-      totalRebate: 4565.14,
-      banned: 1914,
+      accounts: 44240,
+      totalDeposit: 62955.02,
+      profitCount: 8326,
+      totalProfit: 7067.29,
+      lossCount: 35914,
+      totalLoss: -11366.76,
+      memberWinLoss: -4299.47,
+      totalBonus: 7673.87,
+      totalRebate: 4897.69,
+      banned: 2680,
       adjust: 0,
       both: 0,
-      adjustAmount: 108.35,
-      rate: 8.57,
+      adjustAmount: 181.36,
+      rate: 6.06,
     },
     {
       range: "40.01% - 50.00%",
-      accounts: 12357,
-      totalDeposit: 11404.91,
-      profitCount: 2413,
-      totalProfit: 4889.48,
-      lossCount: 9944,
-      totalLoss: -6500.37,
-      memberWinLoss: -1610.89,
-      totalBonus: 2103.02,
-      totalRebate: 2962.95,
-      banned: 882,
+      accounts: 23692,
+      totalDeposit: 50600.44,
+      profitCount: 4230,
+      totalProfit: 1292.61,
+      lossCount: 19462,
+      totalLoss: -5760.45,
+      memberWinLoss: -4467.84,
+      totalBonus: 5308.73,
+      totalRebate: 2922.83,
+      banned: 1286,
       adjust: 0,
       both: 0,
-      adjustAmount: 92.53,
-      rate: 7.14,
+      adjustAmount: 77.88,
+      rate: 5.43,
     },
     {
       range: "50.01% - 60.00%",
-      accounts: 8377,
-      totalDeposit: 4861.27,
-      profitCount: 1624,
-      totalProfit: 877.14,
-      lossCount: 6753,
-      totalLoss: -3577.74,
-      memberWinLoss: -2700.59,
-      totalBonus: 1412.33,
-      totalRebate: 1221.95,
-      banned: 373,
+      accounts: 17926,
+      totalDeposit: 44253.27,
+      profitCount: 3245,
+      totalProfit: 960.25,
+      lossCount: 14681,
+      totalLoss: -3829.92,
+      memberWinLoss: -2869.67,
+      totalBonus: 3774.91,
+      totalRebate: 2126.07,
+      banned: 603,
       adjust: 0,
       both: 0,
-      adjustAmount: 38.25,
-      rate: 4.45,
+      adjustAmount: 55.39,
+      rate: 3.36,
     },
     {
       range: "60.01% - 70.00%",
-      accounts: 6823,
-      totalDeposit: 3184.07,
-      profitCount: 1373,
-      totalProfit: 797.29,
-      lossCount: 5450,
-      totalLoss: -2375.87,
-      memberWinLoss: -1578.58,
-      totalBonus: 1202.93,
-      totalRebate: 823.79,
-      banned: 537,
+      accounts: 14514,
+      totalDeposit: 30236.58,
+      profitCount: 2684,
+      totalProfit: 1142.51,
+      lossCount: 11830,
+      totalLoss: -3320.94,
+      memberWinLoss: -2178.43,
+      totalBonus: 3470.43,
+      totalRebate: 1801.38,
+      banned: 853,
       adjust: 0,
       both: 0,
-      adjustAmount: 139.35,
-      rate: 7.87,
+      adjustAmount: 308.83,
+      rate: 5.88,
     },
     {
       range: "70.01% - 80.00%",
-      accounts: 5438,
-      totalDeposit: 1440.83,
-      profitCount: 1087,
-      totalProfit: 988.37,
-      lossCount: 4351,
-      totalLoss: -1310.38,
-      memberWinLoss: -322.01,
-      totalBonus: 848.4,
-      totalRebate: 224.32,
-      banned: 263,
+      accounts: 12361,
+      totalDeposit: 16335.36,
+      profitCount: 2264,
+      totalProfit: 778.54,
+      lossCount: 10097,
+      totalLoss: -2180.99,
+      memberWinLoss: -1402.46,
+      totalBonus: 2428.46,
+      totalRebate: 1149.66,
+      banned: 424,
       adjust: 0,
       both: 0,
-      adjustAmount: 68.85,
-      rate: 4.84,
+      adjustAmount: 113.7,
+      rate: 3.43,
     },
     {
       range: "80.01% - 90.00%",
-      accounts: 3809,
-      totalDeposit: 946.14,
-      profitCount: 726,
-      totalProfit: 233.41,
-      lossCount: 3083,
-      totalLoss: -902.31,
-      memberWinLoss: -668.9,
-      totalBonus: 610.85,
-      totalRebate: 186.98,
-      banned: 170,
+      accounts: 7847,
+      totalDeposit: 16154.82,
+      profitCount: 1483,
+      totalProfit: 410.07,
+      lossCount: 6364,
+      totalLoss: -1371.99,
+      memberWinLoss: -961.92,
+      totalBonus: 1917.16,
+      totalRebate: 1040.12,
+      banned: 275,
       adjust: 0,
       both: 0,
-      adjustAmount: 15.8,
-      rate: 4.46,
+      adjustAmount: 37.67,
+      rate: 3.5,
     },
     {
       range: "90.01% 以上",
-      accounts: 25978,
-      totalDeposit: 3185.29,
-      profitCount: 5189,
-      totalProfit: 7161.64,
-      lossCount: 20789,
-      totalLoss: -4573.43,
-      memberWinLoss: 2588.21,
-      totalBonus: 4184.93,
-      totalRebate: 2031.74,
-      banned: 2251,
+      accounts: 58440,
+      totalDeposit: 163196.01,
+      profitCount: 10201,
+      totalProfit: 3958.59,
+      lossCount: 48239,
+      totalLoss: -7536.85,
+      memberWinLoss: -3578.26,
+      totalBonus: 14605.55,
+      totalRebate: 11016.9,
+      banned: 4306,
       adjust: 0,
       both: 0,
-      adjustAmount: 283.91,
-      rate: 8.67,
+      adjustAmount: 384.31,
+      rate: 7.37,
     },
   ];
 
@@ -270,21 +270,67 @@ export const ActivityBonusRatioRiskControlStats = () => {
     ((totalBanned + totalAdjust + totalBoth) / totalAccounts) * 100;
 
   return (
-    <div className="bg-white border border-slate-200/60 rounded-xl p-4 md:p-5 shadow-none overflow-hidden space-y-4">
-      <div className="flex flex-col gap-3 border-b border-slate-100 pb-3">
-        <div className="flex items-center justify-between gap-4">
-          <h5 className="text-xl font-bold text-slate-900 flex items-center gap-2.5">
-            <span>2. 全部活动风控率</span>
-          </h5>
+    <div className="space-y-6">
+      {/* 核心活动子模块 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* 官网注册送 */}
+        <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors duration-200">
+          <div className="flex items-center justify-between border-b border-slate-200/60 pb-2.5 mb-3">
+            <span className="font-black text-slate-900 text-sm flex items-center gap-2">
+              <span className="w-1.5 h-3.5 bg-blue-600 rounded-full" />
+              重点活动：官网注册送活动（截止到7.19）
+            </span>
+            <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-200">
+              异常占比: 1.9%
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-xs">
+            <div>
+              <div className="text-slate-500 font-bold mb-0.5">派发人数</div>
+              <div className="font-mono font-black text-slate-950 text-sm">50,818 人</div>
+            </div>
+            <div>
+              <div className="text-slate-500 font-bold mb-0.5">派发金额</div>
+              <div className="font-mono font-black text-slate-950 text-sm">503</div>
+            </div>
+            <div>
+              <div className="text-slate-500 font-bold mb-0.5">会员输赢</div>
+              <div className="font-mono font-black text-rose-600 text-sm">-4659</div>
+            </div>
+          </div>
         </div>
-        <SummaryBox className="mt-2 mb-0 p-4">
-          {highlightNumbers(
-            "SJB期间所有领过红利的用户，按照不同的红利/存款比例进行风控分析，整体保持稳健，平均[[风控拦截率]]为 [[7.86%]]。其中[[低红利占比]]（0-3%）与[[无存款]]人群的[[拦截率]]相对较高（约 [[9-11%]]），有效防范了[[低门槛套利]]风险。",
-          )}
-        </SummaryBox>
+
+        {/* 官网首存送 */}
+        <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors duration-200">
+          <div className="flex items-center justify-between border-b border-slate-200/60 pb-2.5 mb-3">
+            <span className="font-black text-slate-900 text-sm flex items-center gap-2">
+              <span className="w-1.5 h-3.5 bg-amber-600 rounded-full" />
+              重点活动：官网首存送活动（截止到7.19）
+            </span>
+            <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-200">
+              异常占比: 3.7%
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-xs">
+            <div>
+              <div className="text-slate-500 font-bold mb-0.5">派发人数</div>
+              <div className="font-mono font-black text-slate-950 text-sm">92,498 人</div>
+            </div>
+            <div>
+              <div className="text-slate-500 font-bold mb-0.5">派发金额</div>
+              <div className="font-mono font-black text-slate-950 text-sm">5959.6</div>
+            </div>
+            <div>
+              <div className="text-slate-500 font-bold mb-0.5">会员输赢</div>
+              <div className="font-mono font-black text-rose-600 text-sm">-27,100.0</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="overflow-x-auto border border-slate-200/60 rounded-xl shadow-none">
+      {/* 全部活动风控率 */}
+      <div className="bg-white border border-slate-200/60 rounded-xl shadow-none overflow-hidden space-y-4">
+        <div className="overflow-x-auto">
         <table className="w-full text-left text-sm font-bold border-collapse">
           <thead>
             <tr className="bg-slate-100 border-b border-slate-300 text-slate-950 font-black text-sm uppercase tracking-wider">
@@ -331,32 +377,32 @@ export const ActivityBonusRatioRiskControlStats = () => {
                 风控率
               </th>
             </tr>
-            <tr className="bg-slate-50 border-b-2 border-slate-300 text-slate-950 font-black text-sm">
-              <th className="py-2.5 px-3 text-right text-slate-950 font-black">
+            <tr className="bg-slate-50 border-b-2 border-slate-300 text-slate-950 font-black text-sm whitespace-nowrap">
+              <th className="py-2.5 px-3 text-right text-slate-950 font-black whitespace-nowrap">
                 盈利人数
               </th>
-              <th className="py-2.5 px-3 text-right text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right text-slate-950 font-black whitespace-nowrap">
                 盈利额
               </th>
-              <th className="py-2.5 px-3 text-right text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right text-slate-950 font-black whitespace-nowrap">
                 输钱人数
               </th>
-              <th className="py-2.5 px-3 text-right text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right text-slate-950 font-black whitespace-nowrap">
                 输钱额
               </th>
-              <th className="py-2.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black whitespace-nowrap">
                 总输赢
               </th>
-              <th className="py-2.5 px-3 text-right text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right text-slate-950 font-black whitespace-nowrap">
                 总红利
               </th>
-              <th className="py-2.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-black whitespace-nowrap">
                 总返水
               </th>
-              <th className="py-2.5 px-3 text-right text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right text-slate-950 font-black whitespace-nowrap">
                 拦截人数
               </th>
-              <th className="py-2.5 px-3 text-right text-slate-950 font-black">
+              <th className="py-2.5 px-3 text-right text-slate-950 font-black whitespace-nowrap">
                 拦截金额
               </th>
             </tr>
@@ -529,6 +575,7 @@ export const ActivityBonusRatioRiskControlStats = () => {
         </table>
       </div>
     </div>
-  );
+  </div>
+);
 };
 export default ActivityBonusRatioRiskControlStats;

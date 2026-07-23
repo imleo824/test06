@@ -35,11 +35,6 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
   const dailySystemAvg = totalSystem / auditVolumeData.length;
   const dailyManualAvg = totalManual / auditVolumeData.length;
 
-  const headcount = 409;
-  const sjbEfficiency = 28.8; // (Tickets / Hour / Person)
-  const dailyEfficiency = 12.5; // (Tickets / Hour / Person)
-  const efficiencyGrowth = ((sjbEfficiency - dailyEfficiency) / dailyEfficiency) * 100;
-
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -51,14 +46,14 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
         <div className="space-y-1">
           <h4 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-3">
             <div className="w-1.5 h-6 bg-blue-600 rounded-full shrink-0" />
-            4.2.1 审核单量分析 <span className="text-slate-950 font-bold text-base">(只统计SJB期间)</span>
+            4.2.1 审核提款单量 <span className="text-slate-950 font-bold text-base">(只统计SJB期间)</span>
           </h4>
         </div>
       </div>
 
       <SummaryBox>
         {highlightNumbers(
-          `SJB期间日均单量达 [[blue:42,546]]，较日常环比大幅增长 [[green:+165%]]；其中 [[系统自动审核]] 占比 [[blue:80.08%]]。在 [[blue:${headcount} 名]] 审核人员的协作下，通过[[工具赋能]]与[[流程优化]]，人均审核效能从日常的 [[blue:${dailyEfficiency} 单/时]] 提升至 [[green:${sjbEfficiency} 单/时]]（涨幅 [[green:+${efficiencyGrowth.toFixed(1)}%]]）。`,
+          `SJB期间，日均提款单量达 [[blue:${dailyAvg.toLocaleString(undefined, { maximumFractionDigits: 0 })} 单/天]]；其中 [[系统审核]] 占比 [[blue:${avgSystemPct.toFixed(2)}%]]，[[人工审核]] 占比 [[amber:${avgManualPct.toFixed(2)}%]]。由于SJB期间新用户居多，人工审核比例较日常会稍微提升。`,
         )}
       </SummaryBox>
 
@@ -88,7 +83,7 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
 
         <div className="bg-rose-50/20 border border-rose-200/60 rounded-2xl p-5 shadow-xs relative overflow-hidden">
           <div className="flex flex-col h-full">
-            <span className="text-xs font-bold text-slate-800 uppercase tracking-wide mb-1.5">体育拦截金额</span>
+            <span className="text-xs font-bold text-slate-800 uppercase tracking-wide mb-1.5">TY拦截金额</span>
             <div className="flex items-baseline gap-1.5">
               <span className="text-3xl font-bold text-rose-700 font-mono tabular-nums tracking-tight">
                 {totalActivityInterceptAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -99,7 +94,7 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
       </div>
 
       {/* 汇总指标 (Audit Volume Metrics) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* 总审核量 */}
         <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-xs">
           <div className="flex flex-col h-full">
@@ -166,30 +161,6 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
             </div>
           </div>
         </div>
-
-        {/* 人均效能 */}
-        <div className="bg-white border border-slate-200/90 rounded-xl p-4 shadow-xs">
-          <div className="flex flex-col h-full">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-black text-slate-950 uppercase tracking-wider">人均效能</span>
-              <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
-                +{efficiencyGrowth.toFixed(0)}%
-              </span>
-            </div>
-            <div className="flex items-baseline gap-1 mb-3">
-              <span className="text-2xl font-black text-slate-950 tabular-nums">
-                {sjbEfficiency.toFixed(1)}
-              </span>
-              <span className="text-xs font-black text-slate-950">单/时</span>
-            </div>
-            <div className="mt-auto pt-2.5 border-t border-slate-100 flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-900">日常水平</span>
-              <span className="text-sm font-black text-emerald-700 tabular-nums">
-                {dailyEfficiency.toFixed(1)}
-              </span>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* 图表展示 */}
@@ -222,9 +193,9 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
               orientation="right"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: '#b45309', fontSize: 11, fontWeight: 700 }}
+              tick={{ fill: '#4f46e5', fontSize: 11, fontWeight: 700 }}
               tickFormatter={(val) => `${val}%`}
-              domain={[0, 40]}
+              domain={[0, 100]}
               dx={5}
             />
             <Tooltip
@@ -305,10 +276,10 @@ const AuditVolumeStats: React.FC<AuditVolumeStatsProps> = ({
               type="monotone"
               dataKey="manualPct"
               name="人工比例"
-              stroke="#d97706"
+              stroke="#4f46e5"
               strokeWidth={3}
-              dot={{ r: 3, fill: '#fff', stroke: '#d97706', strokeWidth: 2 }}
-              activeDot={{ r: 5, fill: '#d97706', stroke: '#fff', strokeWidth: 2 }}
+              dot={{ r: 3, fill: '#fff', stroke: '#4f46e5', strokeWidth: 2 }}
+              activeDot={{ r: 5, fill: '#4f46e5', stroke: '#fff', strokeWidth: 2 }}
             />
           </ComposedChart>
         </ResponsiveContainer>

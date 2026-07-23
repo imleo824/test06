@@ -69,8 +69,8 @@ export const SiteNewUserRiskControlStats = () => {
  <th className="py-2.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-bold">总输赢</th>
  <th className="py-2.5 px-3 text-right text-slate-950 font-bold">总红利</th>
  <th className="py-2.5 px-3 text-right border-r border-slate-300/80 text-slate-950 font-bold">总返水</th>
- <th className="py-2.5 px-3 text-right text-slate-950 font-bold">拦截人数</th>
- <th className="py-2.5 px-3 text-right text-slate-950 font-bold">拦截金额</th>
+ <th className="py-2.5 px-3 text-right text-slate-950 font-bold whitespace-nowrap">拦截人数</th>
+ <th className="py-2.5 px-3 text-right text-slate-950 font-bold whitespace-nowrap">拦截金额</th>
  </tr>
  </thead>
  <tbody className="divide-y divide-slate-100">

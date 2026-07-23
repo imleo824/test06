@@ -1322,7 +1322,7 @@ export const MatchVolumeRateChart = ({
             <span className="w-1.5 h-1.5 bg-slate-400 rounded-full mt-2 shrink-0" />
             <span>
               {highlightNumbers(
-                "[[对比方式]]：基于玩法盘口的实际赔率算出实际抽水与其预设抽水进行对比。",
+                "[[对比方式]]：基于[[玩法盘口]]的[[实际平均赔率]]算出[[实际抽水]]与其[[预设抽水]]进行对比。",
               )}
             </span>
           </p>

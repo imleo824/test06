@@ -26,7 +26,7 @@ export const ReportCover: React.FC = () => {
           title: "4.1 赛事保障",
           items: [
             { title: "4.1.1 B端操盘监控" },
-            { title: "4.1.2 C端体育拦截" },
+            { title: "4.1.2 C端TY拦截" },
           ],
         },
         {
