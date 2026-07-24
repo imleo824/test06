@@ -1347,7 +1347,7 @@ export const MatchVolumeRateChart = ({
             <SummaryBox>
               <p className="text-base text-slate-950 font-bold leading-relaxed">
                 {highlightNumbers(
-                  `在全场 [[blue:${waterDiffMatchData.length} 场赛事]] 中，共有 [[red:${matchTrendSummary.deficitMatches} 场]] 出现实际水钱低于预期（占比 [[red:${((matchTrendSummary.deficitMatches / waterDiffMatchData.length) * 100).toFixed(2)}%]]），合计达 [[red:${matchTrendSummary.totalLostWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]；另有 [[blue:${waterDiffMatchData.length - matchTrendSummary.deficitMatches} 场]] 水钱超过预期，合计达 [[green:${positiveWaterAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]。低预期赛事的单场偏离幅度显著高于超预期赛事，呈现明显的 [[red:亏水特征]]。`,
+                  `在全场 [[blue:${waterDiffMatchData.length} 场赛事]] 中，共有 [[red:${matchTrendSummary.deficitMatches} 场]] 出现实际水钱低于预期（占比 [[red:${((matchTrendSummary.deficitMatches / waterDiffMatchData.length) * 100).toFixed(2)}%]]），合计达 [[red:${matchTrendSummary.totalLostWater.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]；另有 [[blue:${waterDiffMatchData.length - matchTrendSummary.deficitMatches} 场]] 水钱超过预期，合计达 [[green:${positiveWaterAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}]]。低预期赛事的单场偏离幅度高于超预期赛事，呈现 [[red:亏水特征]]。`,
                 )}
               </p>
             </SummaryBox>
