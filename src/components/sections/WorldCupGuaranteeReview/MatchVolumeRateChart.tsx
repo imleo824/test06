@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import {
   Timer,
   TrendingDown,
-  Activity
+  Activity,
+  Lightbulb
 } from "lucide-react";
 import {
   Bar,
@@ -1503,11 +1504,25 @@ export const MatchVolumeRateChart = ({
               核心玩法水钱分析
             </h6>
             <SummaryBox>
-              <p className="text-base text-slate-950 font-bold leading-relaxed">
-                {highlightNumbers(
-                  "在 [[blue:4个核心玩法]] 中，有 [[red:3个是亏水]] 状态（实际水钱低于预期标准），其中 [[全场大小]] 亏水 [[red:-2,141.05]]，[[全场让球]] 亏水 [[red:-158.53]]，[[上半场让球]] 亏水 [[red:-94.87]]；仅 [[上半场大小]]  [[green:+483.04]] 的正向偏离。",
-                )}
-              </p>
+              <div className="space-y-3">
+                <p className="text-base text-slate-950 font-bold leading-relaxed">
+                  {highlightNumbers(
+                    "在 [[blue:4个核心玩法]] 中，有 [[red:3个呈亏水]] 状态（其中 [[全场大小]] 亏水 [[red:-2,141.05]]，[[全场让球]] 亏水 [[red:-158.53]]，[[上半场让球]] 亏水 [[red:-94.87]]；仅 [[上半场大小]] 呈 [[green:+483.04]] 正向偏离）。",
+                  )}
+                </p>
+                <div className="pt-2 border-t border-blue-100/80">
+                  <p className="text-sm font-bold text-slate-900 bg-amber-50/80 p-3 rounded-lg border border-amber-200/80 text-amber-950 flex items-start gap-2.5 shadow-2xs">
+                    <span className="p-1 rounded-md bg-amber-100 text-amber-600 shrink-0 mt-0.5">
+                      <Lightbulb className="w-4 h-4" />
+                    </span>
+                    <span className="leading-relaxed">
+                      {highlightNumbers(
+                        "结构上[[早盘均未亏水]]，亏水全部集中于[[滚球阶段]]：风控对[[早盘监控更为提前]]，能对早盘赔率及投注数据实施前置监控与分析，拥有充足时间与B端沟通调整；而[[滚球阶段]]受实时动态因素较多限制，风控可干预的时空有限，后续主要依赖操盘端本身策略与工具的升级优化。",
+                      )}
+                    </span>
+                  </p>
+                </div>
+              </div>
             </SummaryBox>
           </div>
 

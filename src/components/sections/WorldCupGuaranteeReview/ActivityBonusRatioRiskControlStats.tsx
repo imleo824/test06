@@ -1,4 +1,5 @@
 import React from "react";
+import { Lightbulb } from "lucide-react";
 import { highlightNumbers, SignColoredValue, SummaryBox } from "./utils";
 
 export const ActivityBonusRatioRiskControlStats = () => {
@@ -272,58 +273,99 @@ export const ActivityBonusRatioRiskControlStats = () => {
   return (
     <div className="space-y-6">
       {/* 核心活动子模块 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* 官网注册送 */}
-        <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors duration-200">
-          <div className="flex items-center justify-between border-b border-slate-200/60 pb-2.5 mb-3">
-            <span className="font-black text-slate-900 text-sm flex items-center gap-2">
-              <span className="w-1.5 h-3.5 bg-blue-600 rounded-full" />
-              重点活动：官网注册送活动（截止到7.19）
-            </span>
-            <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-200">
-              异常占比: 1.9%
-            </span>
+      <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* 官网注册送 */}
+          <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors duration-200">
+            <div className="flex items-center justify-between border-b border-slate-200/60 pb-2.5 mb-3">
+              <span className="font-black text-slate-900 text-sm flex items-center gap-2">
+                <span className="w-1.5 h-3.5 bg-blue-600 rounded-full" />
+                重点活动：官网注册送活动（截止到7.19）
+              </span>
+              <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-200">
+                异常占比: 1.9%
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">派发人数</div>
+                <div className="font-mono font-black text-slate-950 text-sm">50,818 人</div>
+              </div>
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">派发金额</div>
+                <div className="font-mono font-black text-slate-950 text-sm">503</div>
+              </div>
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">会员输赢</div>
+                <div className="font-mono font-black text-rose-600 text-sm">-4659</div>
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 text-xs">
-            <div>
-              <div className="text-slate-500 font-bold mb-0.5">派发人数</div>
-              <div className="font-mono font-black text-slate-950 text-sm">50,818 人</div>
+
+          {/* 官网首存送 */}
+          <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors duration-200">
+            <div className="flex items-center justify-between border-b border-slate-200/60 pb-2.5 mb-3">
+              <span className="font-black text-slate-900 text-sm flex items-center gap-2">
+                <span className="w-1.5 h-3.5 bg-amber-600 rounded-full" />
+                重点活动：官网首存送活动（截止到7.19）
+              </span>
+              <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-200">
+                异常占比: 3.7%
+              </span>
             </div>
-            <div>
-              <div className="text-slate-500 font-bold mb-0.5">派发金额</div>
-              <div className="font-mono font-black text-slate-950 text-sm">503</div>
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">派发人数</div>
+                <div className="font-mono font-black text-slate-950 text-sm">92,498 人</div>
+              </div>
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">派发金额</div>
+                <div className="font-mono font-black text-slate-950 text-sm">5959.6</div>
+              </div>
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">会员输赢</div>
+                <div className="font-mono font-black text-rose-600 text-sm">-27,100.0</div>
+              </div>
             </div>
-            <div>
-              <div className="text-slate-500 font-bold mb-0.5">会员输赢</div>
-              <div className="font-mono font-black text-rose-600 text-sm">-4659</div>
+          </div>
+
+          {/* 100%投注返还 */}
+          <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors duration-200">
+            <div className="flex items-center justify-between border-b border-slate-200/60 pb-2.5 mb-3">
+              <span className="font-black text-slate-900 text-sm flex items-center gap-2">
+                <span className="w-1.5 h-3.5 bg-emerald-600 rounded-full" />
+                重点活动：100%投注返还（截止到7.23）
+              </span>
+              <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">
+                异常占比: 0.3%
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">派发人数</div>
+                <div className="font-mono font-black text-slate-950 text-sm">205,743 人</div>
+              </div>
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">派发金额（第一期）</div>
+                <div className="font-mono font-black text-slate-950 text-sm">5043.9</div>
+              </div>
+              <div>
+                <div className="text-slate-500 font-bold mb-0.5">会员输赢</div>
+                <div className="font-mono font-black text-rose-600 text-sm">-19,200.0</div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* 官网首存送 */}
-        <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors duration-200">
-          <div className="flex items-center justify-between border-b border-slate-200/60 pb-2.5 mb-3">
-            <span className="font-black text-slate-900 text-sm flex items-center gap-2">
-              <span className="w-1.5 h-3.5 bg-amber-600 rounded-full" />
-              重点活动：官网首存送活动（截止到7.19）
-            </span>
-            <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-200">
-              异常占比: 3.7%
-            </span>
-          </div>
-          <div className="grid grid-cols-3 gap-2 text-xs">
-            <div>
-              <div className="text-slate-500 font-bold mb-0.5">派发人数</div>
-              <div className="font-mono font-black text-slate-950 text-sm">92,498 人</div>
-            </div>
-            <div>
-              <div className="text-slate-500 font-bold mb-0.5">派发金额</div>
-              <div className="font-mono font-black text-slate-950 text-sm">5959.6</div>
-            </div>
-            <div>
-              <div className="text-slate-500 font-bold mb-0.5">会员输赢</div>
-              <div className="font-mono font-black text-rose-600 text-sm">-27,100.0</div>
-            </div>
+        {/* 重点活动运营保障与排班说明 */}
+        <div className="flex items-start gap-2 bg-amber-50/80 p-3 rounded-lg border border-amber-200/80 text-amber-950 text-xs sm:text-sm shadow-2xs font-medium">
+          <span className="p-1 rounded-md bg-amber-100 text-amber-600 shrink-0 mt-0.5">
+            <Lightbulb className="w-4 h-4" />
+          </span>
+          <div className="leading-relaxed">
+            {highlightNumbers(
+              "由于[[世界杯热门活动]]目前仍在派发阶段（预计[[8月中下旬]]结束），人员为保障[[线上及时性及拦截质量]]，均执行[[统一活动拦截审核标准]]并做好[[人员排班]]，以应对活动派发后的爆单情况。",
+            )}
           </div>
         </div>
       </div>

@@ -930,11 +930,53 @@ export const WorldCupGuaranteeReview: React.FC = () => {
 
         <div className="mt-2 rounded-xl bg-slate-50/60 p-4 border border-slate-200/50 mb-4 space-y-4">
           <SummaryBox>
-            <p className="text-base text-slate-950 font-bold leading-relaxed">
-              {highlightNumbers(
-                "在[[SJB前]]，提前针对[[赛间低门槛、高额度]]的活动一定会带来[[大量新客套利者]]，进行[[全员风控宣导培训]]，强化[[跨站关联、批量注册、高红利低流水、红利后藏分]]等典型行为实施[[系统拦截与人工复合]]的强化；同时，推行平衡[[业务发展]]和[[资损风险]]的[[弹性风控策略]]。",
-              )}
-            </p>
+            <div className="space-y-3">
+              <p className="text-base text-slate-950 font-bold leading-relaxed">
+                {highlightNumbers(
+                  "在[[SJB前]]，提前针对[[赛间低门槛、高额度]]的活动一定会带来[[大量新客套利者]]，进行[[全员风控宣导培训]]，强化[[跨站关联、批量注册、高红利低流水、红利后藏分]]等典型行为实施[[系统拦截与人工复合]]；同时，推行平衡[[业务发展]]和[[资损风险]]的[[弹性风控策略]]。",
+                )}
+              </p>
+              
+              <div className="pt-2 border-t border-blue-100/80">
+                <p className="text-sm font-bold text-slate-900 bg-blue-50/70 p-2.5 rounded-lg border border-blue-100 text-blue-950 mb-2.5 flex items-center gap-2">
+                  <span className="w-1.5 h-4 bg-blue-600 rounded-full inline-block shrink-0" />
+                  <span>
+                    {highlightNumbers(
+                      "针对[[SJB期间]]建立[[专人专项]]机制，重点推进[[异常识别与前置处理]]，保障风险[[提前预警]]并及时跟进处置：",
+                    )}
+                  </span>
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {[
+                    {
+                      title: "盈利监控",
+                      content: "对[[场馆杀率]]与[[盈利TOP会员]]按[[小时级]]开展分析统计，发现异常第一时间跟进处置",
+                    },
+                    {
+                      title: "活动监控",
+                      content: "针对[[活动派发数据]]进行[[每日复盘]]，及时排查并修复规则漏洞与潜在套利点",
+                    },
+                    {
+                      title: "代理审核",
+                      content: "在[[弹性风险范围]]内对[[新代理]]适度放宽审核，给予更充裕的[[观察期]]",
+                    },
+                    {
+                      title: "盘口监控",
+                      content: "体育组对每日[[早盘、滚球、赛后]]操盘数据安排[[专人复盘]]，及时发现问题并与[[B端联动优化]]",
+                    },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-sm text-slate-800 font-medium bg-white/80 p-2.5 rounded-lg border border-slate-200/60 shadow-2xs">
+                      <span className="inline-block w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
+                      <div className="leading-snug">
+                        <strong className="text-slate-950 font-bold mr-1">{idx + 1}、{item.title}：</strong>
+                        <span className="text-slate-700">{highlightNumbers(item.content)}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </SummaryBox>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
